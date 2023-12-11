@@ -20,9 +20,18 @@ body {
     @apply inline-flex px-6 text-[#B1B3B5] py-1 w-full gap-3 items-center
 }
 
-.route-active .route-icon{
+.route-active .route-icon {
     @apply bg-[var(--primary-blue)] text-white
 }
-.route-active .route-title{
+
+.route-active .route-title {
     @apply text-[#4D4D4D] font-semibold
+}
+
+.route-inactive .route-icon {
+    @apply bg-[#DFE3EE] text-[#A5ABC8]
+}
+
+.route-inactive .route-title {
+    @apply text-[#4D4D4D] font-medium
 }

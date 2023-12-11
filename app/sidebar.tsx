@@ -9,6 +9,8 @@ import { Icon } from '@iconify/react'
 
 interface params { link: string, toggleSidebar: () => void, title: string, icon: string }
 
+
+
 function Sidebarlink(props: params) {
     const pathname = usePathname()
     return <Link onClick={props.toggleSidebar} href={props.link}
@@ -21,6 +23,9 @@ function Sidebarlink(props: params) {
     </Link>
 }
 
+
+
+
 export default function Sidebar({ toggleSidebar }: { toggleSidebar: () => void }) {
     return (
         <div className=" h-screen overflow-hidden w-full lg:max-w-sm ">
@@ -29,9 +34,9 @@ export default function Sidebar({ toggleSidebar }: { toggleSidebar: () => void }
                     <Image src="/images/slicomlogo.png" alt="slico-icon" width={150} height={150} quality={50} />
                 </nav>
             </nav>
-            <ul className="overflow-y-scroll w-full basis-auto flex flex-col gap-3 h-full min-h-max list-none">
+            <ul className="overflow-y-scroll w-full basis-auto flex flex-col gap-3 h-full min-h-max list-none py-4">
                 {sideBarSections.map((section, i) => <li key={i} className="w-full flex flex-col gap-3 text-sm tracking-tight capitalize whitespace-nowrap"  >
-                    <span>{section.sectionName}</span>
+                    <span className=" inline-block px-6 py-2 uppercase tracking-wide text-[#B1B3B5] font-medium">{section.sectionName}</span>
                     <ul className=" w-full basis-auto flex flex-col gap-3 h-full min-h-max list-none">
                         {section.routes.map((route, i) => <li key={i} className="w-full text-sm tracking-tight capitalize whitespace-nowrap"  >
                             {!route.links ?
