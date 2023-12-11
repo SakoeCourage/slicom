@@ -3,25 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    --primary-blue: #0156EB;
+    --primary-bg-gray: #DFE3EE;
+    --header-height: 3.5rem
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    background-color: var(--primary-bg-gray);
+}
+
+.route-active {
+    @apply inline-flex px-6 py-1 relative text-[#4D4D4D] w-full gap-3 items-center
+}
+
+.route-inactive {
+    @apply inline-flex px-6 text-[#B1B3B5] py-1 w-full gap-3 items-center
+}
+
+.route-active .route-icon{
+    @apply bg-[var(--primary-blue)] text-white
+}
+.route-active .route-title{
+    @apply text-[#4D4D4D] font-semibold
 }
