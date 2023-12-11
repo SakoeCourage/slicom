@@ -2,12 +2,12 @@
 
 type routestypedef = {
     title: string;
-    icon: "mingcute:grid-fill";
+    icon: string;
     link: string;
     links?: undefined;
 } | {
     title: string;
-    icon: "mingcute:grid-fill";
+    icon: string;
     links: {
         title: string;
         link: string;
