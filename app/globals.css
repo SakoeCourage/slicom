@@ -9,29 +9,45 @@
 }
 
 body {
-    background-color: var(--primary-bg-gray);
+    background-color: #fff;
 }
 
 .route-active {
-    @apply inline-flex px-6 py-1 relative text-[#4D4D4D] w-full gap-3 items-center
+    @apply flex px-6 py-1 relative text-[#4D4D4D] w-full gap-2 items-center
 }
 
 .route-inactive {
-    @apply inline-flex px-6 text-[#B1B3B5] py-1 w-full gap-3 items-center
+    @apply flex px-6 !text-gray-500/95 py-1 w-full gap-2 items-center
 }
 
 .route-active .route-icon {
     @apply bg-[var(--primary-blue)] text-white
 }
 
+
+.route-active{
+    @apply bg-indigo-100/25 rounded-md
+}
+
 .route-active .route-title {
-    @apply text-[#4D4D4D] font-semibold
+    @apply text-indigo-600 font-semibold 
 }
 
 .route-inactive .route-icon {
-    @apply bg-[#DFE3EE] text-[#A5ABC8]
+    @apply bg-indigo-100 text-indigo-500
 }
 
 .route-inactive .route-title {
-    @apply text-[#4D4D4D] font-medium
+    @apply text-gray-500/95 font-medium
 }
+
+.hiddenscroll::-webkit-scrollbar {
+    display: none;
+}
+
+.hiddenscroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+

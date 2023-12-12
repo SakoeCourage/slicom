@@ -30,238 +30,187 @@ export let sidebarRoutes: routesWitSections =
                     link: '/dashboard',
                 },
                 {
-                    title: "Pen management",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'Pens',
-                        link: '/pen/all',
-
-                    }]
+                    title: "Policies",
+                    icon: "ic:baseline-policy",
+                    links: [
+                        {
+                            title: "All",
+                            link: '/policies/all'
+                        },
+                        {
+                            title: "All Ncd",
+                            link: '/policies/all-ncd'
+                        },
+                    ],
                 },
                 {
-                    title: "Flock management",
-                    icon: "mingcute:grid-fill",
+                    title: "Claims",
+                    icon: "teenyicons:money-solid",
+                    link: "/claims"
+                },
+                {
+                    title: "Endorsements",
+                    icon: "mingcute:edit-fill",
+                    link: "/policies/endorsement"
+                },
+                {
+                    title: "Stickers",
+                    icon: "mdi:sticker-plus",
+                    links: [
+                        {
+                            title: "Purchases",
+                            link: '/stickers/all'
+                        },
+                        {
+                            title: "Stickers",
+                            link: '/stickers/all'
+                        },
+                    ],
+                },
+                {
+                    title: "Reporting",
+                    icon: "icon-park-solid:book",
                     links: [
 
                         {
-                            title: 'Flocks',
-                            link: '/flock/all',
+                            title: 'Pending Policies',
+                            link: '/reporting/pending-policies',
                         },
                         {
-                            title: 'Flock control data',
-                            link: '/flock/control/data',
+                            title: 'Approved Policies',
+                            link: '/reporting/approved-policies',
 
                         },
                         {
-                            title: 'Compare flock',
-                            link: '/flock/compare',
+                            title: 'Cancelled Policies',
+                            link: '/reporting/cancelled-policies',
+
+                        },
+                    ],
+                }
+            ]
+        },
+        {
+            sectionName: "SETUPS",
+            routes: [
+                {
+                    title: 'Intermediaries',
+                    icon: "heroicons:user-group-solid",
+                    links: [
+                        {
+                            title: 'All',
+                            link: '/settings/intermediaries',
                         },
                         {
-                            title: 'Grading',
-                            link: '/flock/products/grade',
+                            title: 'Brokers',
+                            link: '/settings/intermediaries/brokers',
+                        },
+                        {
+                            title: 'Agents',
+                            link: '/settings/intermediaries/agents',
+                        },
+                        {
+                            title: 'Reinsure',
+                            link: '/settings/intermediaries/reinsure',
                         }
                     ],
                 },
                 {
-                    title: "Farm management",
-                    icon: "mingcute:grid-fill",
+                    title: "Institutions",
+                    icon: "bi:building-fill",
                     links: [
-
                         {
-                            title: 'Farm Activities',
-                            link: '/farmmanagement/farmactivities',
+                            title: 'All Institutions',
+                            link: '/settings/institution-management/institutions'
                         },
                         {
-                            title: 'Activity Planner',
-                            link: '/farmmanagement/activityplanner',
-                        }
+                            title: 'Institutions Types',
+                            link: '/settings/institution-management/institution-types'
+                        },
+                        {
+                            title: 'Branches',
+                            link: '/settings/institution-management/branches'
+                        },
+                    ]
+                },
+                
+                {
+                    title: 'Customers',
+                    icon: "streamline:information-desk-customer-solid",
+                    links: [
+                        {
+                            title: 'All Customers',
+                            link: '/settings/customers',
+                        },
+                        {
+                            title: 'Customer Categories',
+                            link: '/settings/customers/categories',
+                        },
+                        {
+                            title: 'Customer Types',
+                            link: '/settings/customers/customer-types',
+                        },
+                        {
+                            title: 'Identification Types',
+                            link: '/settings/customers/customer-types',
+                        },
+                        {
+                            title: 'Occupation',
+                            link: '/settings/customers/occupations',
+                        },
                     ],
                 },
                 {
-                    title: 'Expense',
-                    icon: "mingcute:grid-fill",
-                    link: '/expenses',
-                },
-                {
-                    title: "Stock management",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'Daily overview',
-                        link: '/stock/daily',
-
-                    },
-                    {
-                        title: 'Manage stock',
-                        link: '/stock/manage',
-                    }]
-                },
-                {
-                    title: "Sale management",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'Product orders',
-                        link: '/salemanagement/newsale',
-                    },
-                    {
-                        title: 'Make payment',
-                        link: '/invoice/all',
-                    },
-                    {
-                        title: 'Payments history',
-                        link: '/payments/all',
-                    }
-                    ]
-                },
-                {
-                    title: "Report",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'new report',
-                        link: '/report/new',
-                    },
-                    ]
-                },
-                {
-                    title: "User management",
-                    icon: "mingcute:grid-fill",
+                    title: "Users",
+                    icon: "basil:user-solid",
                     links: [
                         {
-                            title: 'All users',
-                            link: '/user/all',
+                            title: 'All Users',
+                            link: '/settings/user-management/users'
                         },
                         {
-                            title: ' Onboard a user',
-                            link: '/user/create',
-                        }
+                            title: 'Roles',
+                            link: '/settings/user-management/roles'
+                        },
+                        {
+                            title: 'Permissions',
+                            link: '/settings/user-management/permissions'
+                        },
                     ]
                 },
-                {
-                    title: 'System definition',
-                    icon: "mingcute:grid-fill",
-                    link: '/system/definitions',
-                },
+
 
             ]
         },
         {
-            sectionName: "Advance",
+            sectionName: "GENERAL SETTING",
             routes: [
                 {
-                    title: 'Dashboard',
-                    icon: "mingcute:grid-fill",
-                    link: '/dashboard',
+                    title: "Tarrifs",
+                    icon: "mdi:gear",
+                    link: "/general-setting/tarrifs"
                 },
                 {
-                    title: "Pen management",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'Pens',
-                        link: '/pen/all',
+                    title: "Exchange Rates",
+                    icon: "mdi:gear",
+                    link: "/general-setting/exchange-rates"
+                },
+                {
+                    title: "Currencies ",
+                    icon: "mdi:gear",
+                    link: "/general-setting/currencies"
+                },
+                {
+                    title: "Banks",
+                    icon: "mdi:gear",
+                    link: "/general-setting/banks"
+                },
+                {
+                    title: "Financial Interest",
+                    icon: "mdi:gear",
+                    link: "/general-setting/financial-interest"
+                },
 
-                    }]
-                },
-                {
-                    title: "Flock management",
-                    icon: "mingcute:grid-fill",
-                    links: [
-
-                        {
-                            title: 'Flocks',
-                            link: '/flock/all',
-                        },
-                        {
-                            title: 'Flock control data',
-                            link: '/flock/control/data',
-
-                        },
-                        {
-                            title: 'Compare flock',
-                            link: '/flock/compare',
-                        },
-                        {
-                            title: 'Grading',
-                            link: '/flock/products/grade',
-                        }
-                    ],
-                },
-                {
-                    title: "Farm management",
-                    icon: "mingcute:grid-fill",
-                    links: [
-
-                        {
-                            title: 'Farm Activities',
-                            link: '/farmmanagement/farmactivities',
-                        },
-                        {
-                            title: 'Activity Planner',
-                            link: '/farmmanagement/activityplanner',
-                        }
-                    ],
-                },
-                {
-                    title: 'Expense',
-                    icon: "mingcute:grid-fill",
-                    link: '/expenses',
-                },
-                {
-                    title: "Stock management",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'Daily overview',
-                        link: '/stock/daily',
-
-                    },
-                    {
-                        title: 'Manage stock',
-                        link: '/stock/manage',
-                    }]
-                },
-                {
-                    title: "Sale management",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'Product orders',
-                        link: '/salemanagement/newsale',
-                    },
-                    {
-                        title: 'Make payment',
-                        link: '/invoice/all',
-                    },
-                    {
-                        title: 'Payments history',
-                        link: '/payments/all',
-                    }
-                    ]
-                },
-                {
-                    title: "Report",
-                    icon: "mingcute:grid-fill",
-                    links: [{
-                        title: 'new report',
-                        link: '/report/new',
-                    },
-                    ]
-                },
-                {
-                    title: "User management",
-                    icon: "mingcute:grid-fill",
-                    links: [
-                        {
-                            title: 'All users',
-                            link: '/user/all',
-                        },
-                        {
-                            title: ' Onboard a user',
-                            link: '/user/create',
-                        }
-                    ]
-                },
-                {
-                    title: 'System definition',
-                    icon: "mingcute:grid-fill",
-                    link: '/system/definitions',
-                },
 
             ]
         }
