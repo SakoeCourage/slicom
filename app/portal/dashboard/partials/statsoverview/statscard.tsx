@@ -2,9 +2,10 @@
 import React from 'react'
 import { formatnumber } from 'app/app/lib/utils'
 import ReactApexChart, { Props as apexProps } from 'react-apexcharts'
+import dynamic from 'next/dynamic'
+
 
 const colors_sets: Array<string> = ['#22c55e', '#64748b', '#fde047', '#92400e', '#15803d', '#312e81', '#fda4af', '#1e293b', '#84cc16', '#312e81']
-
 
 interface Iparam {
     series: [number, number],

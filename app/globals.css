@@ -16,7 +16,7 @@ body {
 }
 
 .route-inactive {
-    @apply flex py-2 px-2   w-full gap-2 items-center
+    @apply flex py-2 px-2 w-full gap-2 items-center
 }
 
 .route-active .route-icon {
@@ -26,7 +26,7 @@ body {
 
 
 .route-active .route-title {
-    @apply text-orange-600 font-semibold 
+    @apply text-orange-600 font-semibold
 }
 
 .route-inactive .route-icon {
@@ -47,17 +47,48 @@ body {
 }
 
 
-.route-list-subitem::before{
+.route-list-subitem::before {
     content: "";
 }
 
-.add-customer-bezier{
-    transition-timing-function: cubic-bezier(0.08,0.82,0.17,1);;
+.add-customer-bezier {
+    transition-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+    ;
 }
 
-.shadow-c-md{
+.shadow-c-md {
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
-.shadow-c-sm{
+
+.shadow-c-sm {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+
+.modal-sm {
+    @apply w-screen md:w-[368px]
+
+}
+
+.modal-md {
+    @apply w-screen md:w-[500px]
+}
+
+.modal-lg {
+    @apply w-screen md:w-[600px]
+
+}
+
+.modal-xl {
+    @apply w-screen md:w-[750px]
+
+}
+
+.modal-2xl {
+    @apply w-screen md:w-[800px]
+
+}
+
+.modal-full {
+    @apply w-screen 
 }

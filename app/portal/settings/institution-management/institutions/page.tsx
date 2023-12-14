@@ -1,8 +1,13 @@
+"use client"
 import React from 'react'
+import Institutiontable from './partials/Institutiontable'
+
 
 function page() {
   return (
-    <div>page</div>
+    <div className=' container mx-auto p-5'>
+      <Institutiontable />
+    </div>
   )
 }
 

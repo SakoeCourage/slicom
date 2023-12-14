@@ -48,7 +48,7 @@ export default function Sidebaritem(props: params) {
         })
       } onClick={() => setisColapsed(!isColapsed)}>
         <nav className="route-icon p-2 overflow-hidden  rounded-full h-8 w-8 aspect-square flex items-center justify-center">
-          <Icon fontSize="2rem" className="route-icon" icon={props.icon} />
+          <Icon fontSize={40} className="route-icon" icon={props.icon} />
         </nav>
         <span className="route-title">{props.title}</span>
         <svg className={` transfrom transition-transform !justify-self-end ml-auto  ${!isColapsed && ' rotate-180'}`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6l1.41-1.42Z" /></svg>

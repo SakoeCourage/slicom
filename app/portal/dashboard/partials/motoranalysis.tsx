@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import IconifyIcon from 'app/app/components/ui/Iconsbutton'
 import { formatcurrency } from '@/lib/utils'

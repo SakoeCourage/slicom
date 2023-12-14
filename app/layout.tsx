@@ -4,6 +4,7 @@ import './globals.css'
 import 'simplebar-react/dist/simplebar.min.css';
 import Nprogressprovider from './providers/Nprogressprovider'
 import Header from './header';
+import { Breadcrumbserviceprovider } from './providers/Breadcrumbserviceprovider';
 export default function RootLayout({
   children,
 }: {
@@ -15,17 +16,19 @@ export default function RootLayout({
         <Nprogressprovider>
           {/* Sidebar starts here */}
           <Sidebar toggleSidebar={() => void (0)} />
-          
+
           {/* Main  section here */}
-          <main className=' flex flex-col w-full'>
+          <main className=' flex flex-col basis-full'>
             {/* Main  section header */}
             <Header />
-            
+
             <section className='h-[calc(100vh-var(--header-height))] bg-[var(--primary-bg-gray)] pb-4 overflow-y-scroll overflow-x-hidden'>
-              {children}
+              <Breadcrumbserviceprovider>
+                {children}
+              </Breadcrumbserviceprovider>
             </section>
           </main>
-        
+
         </Nprogressprovider>
       </body>
     </html>

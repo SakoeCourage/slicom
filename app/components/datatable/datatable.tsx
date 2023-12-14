@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { DataTablePagination } from 'app/app/components/datatable/partials/tablepagination'
 import { Button } from '../form-components/button'
@@ -5,6 +6,8 @@ import { ColumnDef, flexRender, getCoreRowModel, useReactTable, getPaginationRow
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "app/app/components/datatable/partials/table"
 import { ArrowUpDown } from "lucide-react"
 import TableFilterOptions from './partials/tablefilteroptions'
+
+
 
 interface DataTableProps<TData, TValue, K extends keyof TData> {
     columns: ColumnDef<TData, TValue>[];
@@ -17,6 +20,20 @@ interface DataTableProps<TData, TValue, K extends keyof TData> {
     enableFilterOptions?: boolean,
     heading?: string
 }
+
+/**
+ * 
+ * @param columns - Describes table colums
+ * @param data - Describes table data
+ * @param actionName - Describes the placeholder for table action button
+ * @param onAction - Action for when action button is clicked 
+ * @param enableFilterOptions - Show table filter section ie. top of the table 
+ * @param enablePaginator - Show table pagination section ie. buttom of the table 
+ * @param heading - Describes table heading text
+ * @param sortableColumns - Array of columns to be sortable
+ * @param filterable - Column to be filter from on search input
+ * @returns 
+ */
 
 function DataTable<TData, TValue, K extends keyof TData>({
     columns,
@@ -55,7 +72,7 @@ function DataTable<TData, TValue, K extends keyof TData>({
 
     return (
         <div className="rounded-md border bg-white  ">
-            {heading && <nav className=' px-5  flex items-center !gap-0 text-gray-900 font-semibold py-2 border-b w-full '>
+            {heading && <nav className=' px-5  flex items-center !gap-0 text-gray-600 font-semibold py-2 border-b w-full '>
                 <svg className="my-auto" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2" /></svg>
                 <nav className=''>{heading}</nav>
             </nav>}
@@ -66,14 +83,14 @@ function DataTable<TData, TValue, K extends keyof TData>({
                         <TableRow key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <TableHead className='  whitespace-nowrap flex-nowrap' key={header.id}>
+                                    <TableHead className='  text-gray-700  whitespace-nowrap flex-nowrap' key={header.id}>
                                         {header.isPlaceholder
                                             ? null
                                             : flexRender(
                                                 header.column.columnDef.header,
                                                 header.getContext()
                                             )}
-                                        {sortableColumns.includes(header.column.columnDef.header?.toString().toLocaleLowerCase()) && <Button
+                                        {sortableColumns.map(str => str.toString().toLowerCase()).includes(header.column.columnDef.header?.toString().toLocaleLowerCase().replace(/\s/g, '')) && <Button
                                             variant="ghost"
                                             onClick={() => header.column.toggleSorting(header.column.getIsSorted() == "asc")}
                                         >
@@ -89,10 +106,11 @@ function DataTable<TData, TValue, K extends keyof TData>({
                     {table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => (
                             <TableRow
+                                className=' text-gray-700 font-normal'
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"} >
                                 {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
+                                    <TableCell className=' min-w-max' key={cell.id}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </TableCell>
                                 ))}
