@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 :root {
-    --primary-blue: #0156EB;
-    --primary-bg-gray: #DFE3EE;
-    --header-height: 3.5rem
+    --primary-bg-gray: #fdfdfe;
+    --header-height: 4rem
 }
 
 body {
@@ -13,32 +12,29 @@ body {
 }
 
 .route-active {
-    @apply flex px-6 py-1 relative text-[#4D4D4D] w-full gap-2 items-center
+    @apply flex py-2 px-2 relative text-[#4D4D4D] w-full gap-2 items-center bg-orange-300/25 rounded-md
 }
 
 .route-inactive {
-    @apply flex px-6 !text-gray-500/95 py-1 w-full gap-2 items-center
+    @apply flex py-2 px-2   w-full gap-2 items-center
 }
 
 .route-active .route-icon {
-    @apply bg-[var(--primary-blue)] text-white
+    @apply bg-orange-500 text-white
 }
 
 
-.route-active{
-    @apply bg-indigo-100/25 rounded-md
-}
 
 .route-active .route-title {
-    @apply text-indigo-600 font-semibold 
+    @apply text-orange-600 font-semibold 
 }
 
 .route-inactive .route-icon {
-    @apply bg-indigo-100 text-indigo-500
+    @apply bg-orange-100 text-orange-600
 }
 
 .route-inactive .route-title {
-    @apply text-gray-500/95 font-medium
+    @apply !text-gray-600 font-medium
 }
 
 .hiddenscroll::-webkit-scrollbar {
@@ -51,3 +47,17 @@ body {
 }
 
 
+.route-list-subitem::before{
+    content: "";
+}
+
+.add-customer-bezier{
+    transition-timing-function: cubic-bezier(0.08,0.82,0.17,1);;
+}
+
+.shadow-c-md{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.shadow-c-sm{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}

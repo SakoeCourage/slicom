@@ -1,25 +1,6 @@
+import type { routesListWitSections } from "app/app/types/portal/sidebar-typedef";
 
-
-type routestypedef = {
-    title: string;
-    icon: string;
-    link: string;
-    links?: undefined;
-} | {
-    title: string;
-    icon: string;
-    links: {
-        title: string;
-        link: string;
-    }[];
-    link?: undefined;
-}
-
-type routesWitSections = {
-    sectionName: string,
-    routes: routestypedef[]
-}[]
-export let sidebarRoutes: routesWitSections =
+export let sidebarRoutes: routesListWitSections =
     [
         {
             sectionName: "Basics",
@@ -34,12 +15,12 @@ export let sidebarRoutes: routesWitSections =
                     icon: "ic:baseline-policy",
                     links: [
                         {
-                            title: "All",
+                            title: "All Policies",
                             link: '/policies/all'
                         },
                         {
                             title: "All Ncd",
-                            link: '/policies/all-ncd'
+                            link: '/policies/ncd'
                         },
                     ],
                 },
@@ -51,7 +32,7 @@ export let sidebarRoutes: routesWitSections =
                 {
                     title: "Endorsements",
                     icon: "mingcute:edit-fill",
-                    link: "/policies/endorsement"
+                    link: "/endorsements"
                 },
                 {
                     title: "Stickers",
@@ -59,10 +40,10 @@ export let sidebarRoutes: routesWitSections =
                     links: [
                         {
                             title: "Purchases",
-                            link: '/stickers/all'
+                            link: '/stickers/purchases'
                         },
                         {
-                            title: "Stickers",
+                            title: "All Stickers",
                             link: '/stickers/all'
                         },
                     ],
@@ -98,8 +79,8 @@ export let sidebarRoutes: routesWitSections =
                     icon: "heroicons:user-group-solid",
                     links: [
                         {
-                            title: 'All',
-                            link: '/settings/intermediaries',
+                            title: 'All Intermediaries',
+                            link: '/settings/intermediaries/all',
                         },
                         {
                             title: 'Brokers',
@@ -133,14 +114,14 @@ export let sidebarRoutes: routesWitSections =
                         },
                     ]
                 },
-                
+
                 {
                     title: 'Customers',
                     icon: "streamline:information-desk-customer-solid",
                     links: [
                         {
                             title: 'All Customers',
-                            link: '/settings/customers',
+                            link: '/settings/customers/all',
                         },
                         {
                             title: 'Customer Categories',
@@ -152,7 +133,7 @@ export let sidebarRoutes: routesWitSections =
                         },
                         {
                             title: 'Identification Types',
-                            link: '/settings/customers/customer-types',
+                            link: '/settings/customers/identification-types',
                         },
                         {
                             title: 'Occupation',
