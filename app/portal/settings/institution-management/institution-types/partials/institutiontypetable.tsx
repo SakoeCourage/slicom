@@ -20,8 +20,6 @@ export const columns: ColumnDef<IinstitionTypeSchema>[] = [
     }
 ]
 
-
-
 function Institutiontypetable() {
     const [showNewTypeForm, setShowNewTypeForm] = useState(false)
     return (
@@ -31,7 +29,7 @@ function Institutiontypetable() {
                 onConfirm={() => void (0)}
                 closeModal={() => setShowNewTypeForm(false)}
             >
-                <Newinstitutiontypeform/>
+                <Newinstitutiontypeform />
             </Modal>
             {/* <Sidemodal size='lg' open={showNewTypeForm} closeModal={() => setShowNewTypeForm(false)} title='Add Institution Type'>
                 <Newinstitutiontypeform />
