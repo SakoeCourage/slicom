@@ -6,6 +6,7 @@ const variants = {
   'success': 'success',
   'outline': 'outline',
   'ghost': 'ghost',
+  'danger': 'danger',
 }
 
 const sizes = {
@@ -22,7 +23,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: keyof typeof sizes,
   children?: React.ReactNode,
   className?: string
-  processing: boolean
+  processing?: boolean
 }
 /**
  * 
@@ -33,7 +34,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
  * @return
  */
 const Button = ({ className, children, variant = "default", size = "auto", ...props }: ButtonProps): React.JSX.Element => {
-  return <button disabled={props.disabled || props.processing} {...props} className={`button cursor-pointer flex items-center gap-2 ${variants[variant]} ${sizes[size]} ${className}`}>
+  return <button disabled={props.disabled || props.processing} {...props} className={`button cursor-pointer text-center flex items-center gap-2 ${variants[variant]} ${sizes[size]} ${className}`}>
     {props.processing && <Loadingspinner className="!w-auto text-white !h-[3/4] !aspect-square" />}
     {children}
   </button>

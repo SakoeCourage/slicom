@@ -5,7 +5,8 @@ import { IinstitionTypeSchema, insitituionTypeList } from '../instuitiontypesdef
 import DataTable from 'app/app/components/datatable/datatable'
 import dynamic from 'next/dynamic'
 import Newinstitutiontypeform from './newinstitutiontypeform'
-const Modal = dynamic(import('app/app/components/ui/modal'),{ssr:false})
+// const Modal = dynamic(import('app/app/components/ui/modal'),{ssr:false})
+import Modal from 'app/app/components/ui/modal'
 const Sidemodal = dynamic(() => import('app/app/components/ui/sidemodal'), { ssr: false })
 
 export const columns: ColumnDef<IinstitionTypeSchema>[] = [
@@ -25,10 +26,16 @@ function Institutiontypetable() {
     const [showNewTypeForm, setShowNewTypeForm] = useState(false)
     return (
         <div>
-            <Sidemodal size='lg' open={showNewTypeForm} closeModal={() => setShowNewTypeForm(false)} title='Add Institution Type'>
+            <Modal title='New institution Type'
+                open={showNewTypeForm}
+                onConfirm={() => void (0)}
+                closeModal={() => setShowNewTypeForm(false)}
+            >
+                <Newinstitutiontypeform/>
+            </Modal>
+            {/* <Sidemodal size='lg' open={showNewTypeForm} closeModal={() => setShowNewTypeForm(false)} title='Add Institution Type'>
                 <Newinstitutiontypeform />
-            </Sidemodal>
-            <Modal />
+            </Sidemodal> */}
             <DataTable
                 sortableColumns={['name', 'createdAt']}
                 columns={columns}
