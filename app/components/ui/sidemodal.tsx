@@ -30,7 +30,7 @@ interface Imodal {
     showDivider?: boolean;
 }
 
-const Sidemodal: React.FC<Imodal> = ({ open = false, size = "md", title, children,closeModal }) => {
+const Sidemodal: React.FC<Imodal> = ({ open = false, size = "md", title, children, closeModal }) => {
     return (
         <Sheet open={open}>
             <SheetContent className={`${variants[size]}`} suppressHydrationWarning >
@@ -38,10 +38,10 @@ const Sidemodal: React.FC<Imodal> = ({ open = false, size = "md", title, childre
                     <nav className='pl-3 text-sm my-auto'>
                         {title}
                     </nav>
-                    <IconifyIcon onClick={()=>closeModal()} className='text-gray-700 mr-3 my-auto cursor-pointer' icon='iconamoon:close-light' />
+                    <IconifyIcon onClick={() => closeModal()} className='text-gray-700 mr-3 my-auto cursor-pointer' icon='iconamoon:close-light' />
                 </nav>
                 <SimpleBar className=' h-[calc(100vh-3.5rem)] border-none focus:border-none outline-none focus:outline-none'>
-
+                    {children}
                 </SimpleBar>
             </SheetContent>
         </Sheet>

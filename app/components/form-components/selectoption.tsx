@@ -21,13 +21,13 @@ interface ISelectparams extends SelectProps {
 function selectoption(props: ISelectparams) {
     const { label, options, placeholder, className, ...rest } = props
     return (
-        <div className={`flex flex-col gap-3 ${className}`}>
+        <div className={`flex flex-col gap-2 ${className}`}>
             {label && <Label className="flex items-center gap-1">{label}
                 {props.required && <abbr className="text-red-500" title="This field is required ">*</abbr>}
             </Label>}
             <Select {...rest}>
-                <SelectTrigger className="w-max">
-                    <SelectValue placeholder={placeholder} />
+                <SelectTrigger className="w-full text-gray-600 ">
+                    <SelectValue className=" " placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
                     {options.map((option, i) => {
