@@ -67,7 +67,6 @@ body {
 
 .modal-sm {
     @apply w-screen md:w-[368px]
-
 }
 
 .modal-md {
@@ -76,19 +75,65 @@ body {
 
 .modal-lg {
     @apply w-screen md:w-[600px]
-
 }
 
 .modal-xl {
     @apply w-screen md:w-[750px]
-
 }
 
 .modal-2xl {
     @apply w-screen md:w-[800px]
-
 }
 
 .modal-full {
-    @apply w-screen 
+    @apply w-screen
+}
+
+.button {
+    @apply rounded-md outline-none focus:outline-none w-max shadow py-2 px-3 text-sm flex items-center flex-nowrap gap-1
+}
+
+.button.primary {
+    @apply bg-orange-500 text-white
+}
+
+.button.default {
+    @apply bg-blue-500 text-white
+}
+
+.button.success {
+    @apply bg-green-500 text-white
+}
+
+.button.ghost {
+    @apply bg-white text-gray-500 border-none
+}
+
+.button.outline {
+    @apply bg-transparent border border-gray-400 text-gray-500
+}
+
+
+
+.button.sm {
+    @apply w-[5rem]
+}
+
+.button.md {
+    @apply w-[7rem]
+}
+
+.button.lg {
+    @apply w-[9rem]
+}
+
+.button.xl {
+    @apply w-[11rem]
+}
+
+.button.full {
+    @apply w-full
+}
+.button.auto {
+    @apply w-auto
 }

@@ -90,12 +90,13 @@ function DataTable<TData, TValue, K extends keyof TData>({
                                                 header.column.columnDef.header,
                                                 header.getContext()
                                             )}
-                                        {sortableColumns.map(str => str.toString().toLowerCase()).includes(header.column.columnDef.header?.toString().toLocaleLowerCase().replace(/\s/g, '')) && <Button
-                                            variant="ghost"
-                                            onClick={() => header.column.toggleSorting(header.column.getIsSorted() == "asc")}
-                                        >
-                                            <ArrowUpDown className="ml-1 whitespace-nowrap inline my-auto h-3 w-4" />
-                                        </Button>}
+                                        {sortableColumns.map(str => str.toString().toLowerCase()).includes(header.column.columnDef.header?.toString().toLocaleLowerCase().replace(/\s/g, ''))
+                                            && <button
+                                                className='inline-flex items-center justify-center'
+                                                onClick={() => header.column.toggleSorting(header.column.getIsSorted() == "asc")}
+                                            >
+                                                <ArrowUpDown className="ml-1 whitespace-nowrap inline my-auto h-3 w-4" />
+                                            </button>}
                                     </TableHead>
                                 )
                             })}

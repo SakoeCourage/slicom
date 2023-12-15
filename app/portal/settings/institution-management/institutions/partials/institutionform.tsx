@@ -16,10 +16,10 @@ function institutionform() {
             <Input type='text' label='Email' placeholder='Email' />
             <Input type='text' label='Contact' placeholder='(00) (000) (0000) (000)' />
             <nav className='flex items-center justify-end gap-3'>
-                <Button variant='outline'>
+                <Button variant='outline' size='sm'>
                     Cancel
                 </Button>
-                <Button variant='default'>
+                <Button variant='success' size='sm'>
                     Save
                 </Button>
             </nav>

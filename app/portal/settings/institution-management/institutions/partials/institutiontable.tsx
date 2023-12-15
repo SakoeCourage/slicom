@@ -39,7 +39,7 @@ export const columns: ColumnDef<intsitutionSchema>[] = [
 
 
 function Institutiontable() {
-    const [showNewInstitutionForm, setShowNewInstitutionForm] = useState(true)
+    const [showNewInstitutionForm, setShowNewInstitutionForm] = useState(false)
     return (
         <div>
             <Sidemodal size='lg' open={showNewInstitutionForm} closeModal={() => setShowNewInstitutionForm(false)} title='Add Institution'>

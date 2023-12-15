@@ -32,7 +32,7 @@ interface Imodal {
 
 const Sidemodal: React.FC<Imodal> = ({ open = false, size = "md", title, children, closeModal }) => {
     return (
-        <Sheet open={open}>
+        <Sheet  open={open}>
             <SheetContent className={`${variants[size]}`} suppressHydrationWarning >
                 <nav className=' flex items-center justify-between  border-b h-[3.5rem]'>
                     <nav className='pl-3 text-sm my-auto'>
