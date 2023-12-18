@@ -6,7 +6,7 @@ import DataTable from 'app/app/components/datatable/datatable'
 import dynamic from 'next/dynamic'
 import Institutionform from './institutionform'
 const Sidemodal = dynamic(() => import('app/app/components/ui/sidemodal'), { ssr: false })
-
+import Modal from 'app/app/components/ui/modal'
 export const columns: ColumnDef<intsitutionSchema>[] = [
     {
         accessorKey: "name",
@@ -42,9 +42,9 @@ function Institutiontable() {
     const [showNewInstitutionForm, setShowNewInstitutionForm] = useState(false)
     return (
         <div>
-            <Sidemodal size='lg' open={showNewInstitutionForm} closeModal={() => setShowNewInstitutionForm(false)} title='Add Institution'>
+            <Modal onConfirm={()=>void(0)} size="xl" open={showNewInstitutionForm} closeModal={() => setShowNewInstitutionForm(false)} title='Add Institution'>
                 <Institutionform />
-            </Sidemodal>
+            </Modal>
             <DataTable
                 sortableColumns={['institutionType']}
                 columns={columns}

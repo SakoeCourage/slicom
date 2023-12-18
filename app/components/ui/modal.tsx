@@ -16,7 +16,7 @@ const variants = {
 interface Imodal {
   open: boolean;
   closeModal: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void;
   size?: keyof typeof variants;
   children?: React.ReactNode | React.JSX.Element;
   title?: string;

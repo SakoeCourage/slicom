@@ -110,7 +110,7 @@ export default function recentstickerpurchases() {
 
 
     return (
-        <div className=" basis-full lg:basis-[70%]">
+        <div className=" md:col-span-3">
             <DataTable
                 enableFilterOptions={false}
                 enablePaginator={false}

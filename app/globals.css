@@ -142,3 +142,12 @@ body {
 .button.auto {
     @apply w-auto
 }
+
+
+.bar-chart {
+    background: transparent linear-gradient(62deg, #f7f4f2 0%, #fbfbfb 53%, #fcfaf6 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 6px #f5f1ed;
+    border-radius: 8px;
+}
+
+
