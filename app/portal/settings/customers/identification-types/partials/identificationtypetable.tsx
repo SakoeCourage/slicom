@@ -1,17 +1,21 @@
 "use client"
 import React, { useState } from 'react'
 import { ColumnDef } from '@tanstack/react-table'
-import { IinstitionTypeSchema, insitituionTypeList } from '../instuitiontypesdefs'
+import { IdentificationtypeScheme, identificationtypeslist } from '../identificationtypedefs'
 import DataTable from 'app/app/components/datatable/datatable'
 import dynamic from 'next/dynamic'
-import Newinstitutiontypeform from './newinstitutiontypeform'
+import Newidentificationtypeform from './newidentificationtypeform'
 import Modal from 'app/app/components/ui/modal'
 import Moreoptions from 'app/app/components/datatable/moreoptions'
 
-export const columns: ColumnDef<IinstitionTypeSchema>[] = [
+export const columns: ColumnDef<IdentificationtypeScheme>[] = [
+    {
+        accessorKey: "code",
+        header: "Code",
+    },
     {
         accessorKey: "name",
-        header: "Institution Type",
+        header: "Branch Name",
     },
     {
         accessorKey: "createdAt",
@@ -19,7 +23,7 @@ export const columns: ColumnDef<IinstitionTypeSchema>[] = [
     },
     {
         accessorKey: "action",
-        header: "Action",
+        header: "Actions",
         cell: ({ row }) => <Moreoptions
             options={
                 [
@@ -28,30 +32,28 @@ export const columns: ColumnDef<IinstitionTypeSchema>[] = [
                 ]
             } />
     },
-
 ]
 
-function Institutiontypetable() {
-    const [showNewTypeForm, setShowNewTypeForm] = useState(false)
+function identificationtypetable() {
+    const [showNewIDTypeForm, setShowNewIDTypeForm] = useState(false)
     return (
         <div>
-            <Modal title='New institution Type'
-                open={showNewTypeForm}
-                closeModal={() => setShowNewTypeForm(false)}
+            <Modal title='Add Identification Type'
+                open={showNewIDTypeForm}
+                closeModal={() => setShowNewIDTypeForm(false)}
             >
-                <Newinstitutiontypeform />
+                <Newidentificationtypeform />
             </Modal>
-
             <DataTable
-                sortableColumns={['name', 'createdAt']}
+                sortableColumns={['name']}
                 columns={columns}
-                data={insitituionTypeList}
+                data={identificationtypeslist}
                 filterable="name"
-                actionName='New Institution Type'
-                onAction={() => setShowNewTypeForm(true)}
+                actionName='Add Identification Type'
+                onAction={() => setShowNewIDTypeForm(true)}
             />
         </div>
     )
 }
 
-export default Institutiontypetable
+export default identificationtypetable

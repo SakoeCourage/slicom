@@ -11,16 +11,16 @@ export let sidebarRoutes: routesListWitSections =
                     link: '/dashboard',
                 },
                 {
-                    title: "Policies",
-                    icon: "ic:baseline-policy",
+                    title: "Underwriting",
+                    icon: "streamline:chat-bubble-square-write-solid",
                     links: [
                         {
                             title: "All Policies",
-                            link: '/policies/all'
+                            link: '/underwriting/all'
                         },
                         {
                             title: "All Ncd",
-                            link: '/policies/ncd'
+                            link: '/underwriting/ncd'
                         },
                     ],
                 },
@@ -124,10 +124,6 @@ export let sidebarRoutes: routesListWitSections =
                             link: '/settings/customers/all',
                         },
                         {
-                            title: 'Customer Categories',
-                            link: '/settings/customers/categories',
-                        },
-                        {
                             title: 'Customer Types',
                             link: '/settings/customers/customer-types',
                         },
@@ -159,40 +155,31 @@ export let sidebarRoutes: routesListWitSections =
                         },
                     ]
                 },
-
-
-            ]
-        },
-        {
-            sectionName: "GENERAL SETTING",
-            routes: [
                 {
                     title: "Tarrifs",
                     icon: "mdi:gear",
-                    link: "/general-setting/tarrifs"
+                    link: "/settings/tarrifs"
                 },
                 {
                     title: "Exchange Rates",
                     icon: "mdi:gear",
-                    link: "/general-setting/exchange-rates"
+                    link: "/settings/exchange-rates"
                 },
                 {
                     title: "Currencies ",
                     icon: "mdi:gear",
-                    link: "/general-setting/currencies"
+                    link: "/settings/currencies"
                 },
                 {
                     title: "Banks",
                     icon: "mdi:gear",
-                    link: "/general-setting/banks"
+                    link: "/settings/banks"
                 },
                 {
                     title: "Financial Interest",
                     icon: "mdi:gear",
                     link: "/general-setting/financial-interest"
                 },
-
-
             ]
         }
 

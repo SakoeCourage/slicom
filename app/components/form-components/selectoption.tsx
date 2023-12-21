@@ -26,8 +26,8 @@ function selectoption(props: ISelectparams) {
                 {props.required && <abbr className="text-red-500" title="This field is required ">*</abbr>}
             </Label>}
             <Select {...rest}>
-                <SelectTrigger className="w-full text-gray-600 ">
-                    <SelectValue className=" " placeholder={placeholder} />
+                <SelectTrigger className="w-full text-gray-600 bg-white ">
+                    <SelectValue className="bg-white " placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
                     {options.map((option, i) => {

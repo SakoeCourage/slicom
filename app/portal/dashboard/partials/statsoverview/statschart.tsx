@@ -3,15 +3,26 @@ import ReactApexChart, { Props as apexProps } from 'react-apexcharts'
 import dynamic from 'next/dynamic'
 import { formatcurrency } from 'app/app/lib/utils';
 
+const labels: string[] = ['Comprehensive', 'Fire and Theft','Third Party', ]
+const colors: string[] = ['#678AE2', '#9262C9', '#53CEC1']
+const series: number[] = [400, 430, 448]
+
 function statschart() {
     const state: apexProps = {
-        series: [400, 430, 448],
+        series: [...series],
         
         options: {
-            labels: ['Comprehensive', 'Third Party', 'Fire and Theft'],
+            colors: [...colors],
+            labels: [...labels],
             legend: {
-                show: true,
+                show: false,
                 position: "bottom",
+            },
+            tooltip: {
+                enabled: true,
+                y: {
+                    formatter: (val, opts) => formatcurrency(val)
+                }
             },
             dataLabels: {
                 enabled: false,
@@ -30,24 +41,46 @@ function statschart() {
                     }
                 }
             }],
-        
+
         },
-        colors: ['#678AE2', '#9262C9', '#53CEC1'],
+     
         dataLabels: {
             enabled: false
         },
-   
+
 
     }
 
+    const getPercentageOf = (i: number) => {
+        const numerator = series[i]
+        const total = series.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        return Math.round(((numerator / total) * 100)) + "%"
+    }
+
     return (
-        <div className='w-full md:col-span-2 ' id='chart'>
-            <ReactApexChart
-                className="w-full bar-chart p-5"
-                options={state.options}
-                series={state.series} type="donut"
-                height={200}
-            />
+        <div className='w-full md:col-span-2 flex flex-col shadow-c-md h-max rounded-md ' id='chart'>
+            <nav className=' text-sm text-gray-600 py-3 border-b font-semibold px-2'>Premium Distribution <span className='text-gray-400'>%</span></nav>
+            <div className='flex bar-chart'>
+                <ReactApexChart
+                    className="w-max p-5 basis-[60%]"
+                    options={state.options}
+                    series={state.series} type="donut"
+                    height={200}
+                />
+                <nav className='flex flex-col my-auto'>
+                    {
+                        labels.map((label, i) => {
+                            return <nav key={i} className='flex items-center gap-1 '>
+                                <nav className=' h-3 w-3 my-auto rounded-full aspect-square ' style={{ backgroundColor: colors[i] }}>
+                                </nav>
+                                <nav className=' py-1 text-sm font-semibold text-gray-500 truncate whitespace-nowrap'>
+                                    {label} <span className='inline-block text-xs text-gray-400 '>({getPercentageOf(i)})</span>
+                                </nav>
+                            </nav>
+                        })
+                    }
+                </nav>
+            </div>
         </div>
     )
 }

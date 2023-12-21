@@ -1,25 +1,29 @@
 "use client"
 import React, { useState } from 'react'
 import { ColumnDef } from '@tanstack/react-table'
-import { IinstitionTypeSchema, insitituionTypeList } from '../instuitiontypesdefs'
+import { Icustomertype, customertypeslist } from '../customertypedef'
 import DataTable from 'app/app/components/datatable/datatable'
 import dynamic from 'next/dynamic'
-import Newinstitutiontypeform from './newinstitutiontypeform'
+import Newcustomertypeform from './newcustomertypeform'
 import Modal from 'app/app/components/ui/modal'
 import Moreoptions from 'app/app/components/datatable/moreoptions'
 
-export const columns: ColumnDef<IinstitionTypeSchema>[] = [
+export const columns: ColumnDef<Icustomertype>[] = [
+    {
+        accessorKey: "code",
+        header: "Code",
+    },
     {
         accessorKey: "name",
-        header: "Institution Type",
+        header: "Branch Name",
     },
     {
         accessorKey: "createdAt",
-        header: "Created At",
+        header: "Create At ",
     },
     {
         accessorKey: "action",
-        header: "Action",
+        header: "Actions",
         cell: ({ row }) => <Moreoptions
             options={
                 [
@@ -28,30 +32,28 @@ export const columns: ColumnDef<IinstitionTypeSchema>[] = [
                 ]
             } />
     },
-
 ]
 
-function Institutiontypetable() {
-    const [showNewTypeForm, setShowNewTypeForm] = useState(false)
+function customertypetable() {
+    const [showNewCustomerTypeForm, setShowNewCustomerTypeForm] = useState(false)
     return (
         <div>
-            <Modal title='New institution Type'
-                open={showNewTypeForm}
-                closeModal={() => setShowNewTypeForm(false)}
+            <Modal title='Add Customer Type'
+                open={showNewCustomerTypeForm}
+                closeModal={() => setShowNewCustomerTypeForm(false)}
             >
-                <Newinstitutiontypeform />
+                <Newcustomertypeform />
             </Modal>
-
             <DataTable
-                sortableColumns={['name', 'createdAt']}
+                sortableColumns={['name']}
                 columns={columns}
-                data={insitituionTypeList}
+                data={customertypeslist}
                 filterable="name"
-                actionName='New Institution Type'
-                onAction={() => setShowNewTypeForm(true)}
+                actionName='Add Customer Type'
+                onAction={() => setShowNewCustomerTypeForm(true)}
             />
         </div>
     )
 }
 
-export default Institutiontypetable
+export default customertypetable

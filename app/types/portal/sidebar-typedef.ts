@@ -1,24 +1,26 @@
-
-/**
- * Variants of sidebar routes
- */
-export type routesTypesDef = {
+export type singleSbItem = {
     title: string;
     icon: string;
     link: string;
-    links?: undefined;
-} | {
+    links?: undefined
+}
+
+export type sbitemWithLinks = {
     title: string;
     icon: string;
     links: {
         title: string;
         link: string;
     }[];
-    link?: undefined;
+    link?: undefined
 }
 
 /**
- * Typical Sidebar typescheme with sections
+ * Variants of sidebar routes
+ */
+export type routesTypesDef = singleSbItem | sbitemWithLinks
+/**
+ * Typical Sidebar section
  */
 export type routesListWitSections = {
     sectionName: string,

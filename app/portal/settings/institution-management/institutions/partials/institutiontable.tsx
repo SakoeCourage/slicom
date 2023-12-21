@@ -3,10 +3,9 @@ import React, { useState } from 'react'
 import { ColumnDef } from '@tanstack/react-table'
 import { institutionList, intsitutionSchema } from '../instituitionsetuptypedefs'
 import DataTable from 'app/app/components/datatable/datatable'
-import dynamic from 'next/dynamic'
 import Institutionform from './institutionform'
-const Sidemodal = dynamic(() => import('app/app/components/ui/sidemodal'), { ssr: false })
 import Modal from 'app/app/components/ui/modal'
+import Moreoptions from 'app/app/components/datatable/moreoptions'
 export const columns: ColumnDef<intsitutionSchema>[] = [
     {
         accessorKey: "name",
@@ -30,19 +29,24 @@ export const columns: ColumnDef<intsitutionSchema>[] = [
     },
     {
         accessorKey: "",
-        header: "Action",
-        // cell: ({ row }) => `${formatcurrency(row.original.orderTotal)}`
+        header: "Actions",
+        cell: ({ row }) => <Moreoptions
+            options={
+                [
+                    { optionName: "Edit", onOptionSelected: () => console.log(row.original.name), icon: "basil:edit-outline", theme:'success' },
+                    { optionName: "Delete", onOptionSelected: () => console.log(row.original.name), icon: "mdi-light:delete", theme:'danger'},
+                ]
+            }
+        />
     },
 
 ]
-
-
 
 function Institutiontable() {
     const [showNewInstitutionForm, setShowNewInstitutionForm] = useState(false)
     return (
         <div>
-            <Modal onConfirm={()=>void(0)} size="xl" open={showNewInstitutionForm} closeModal={() => setShowNewInstitutionForm(false)} title='Add Institution'>
+            <Modal size="xl" open={showNewInstitutionForm} closeModal={() => setShowNewInstitutionForm(false)} title='Add Institution'>
                 <Institutionform />
             </Modal>
             <DataTable

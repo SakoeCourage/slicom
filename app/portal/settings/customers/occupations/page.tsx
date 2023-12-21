@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Occupationstable from './partials/occupationstable'
 function page() {
   return (
-    <div>page</div>
+    <div className='container mx-auto p-5'>
+      <Occupationstable />
+    </div>
   )
 }
 

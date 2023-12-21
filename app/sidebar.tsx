@@ -8,7 +8,6 @@ import Image from "next/image";
 import { Icon } from '@iconify/react'
 import SimpleBar from "simplebar-react";
 
-
 interface params { link: string, toggleSidebar: () => void, title: string, icon: string }
 function Sidebarlink(props: params) {
     const pathname = usePathname()
@@ -29,7 +28,7 @@ function Sidebarlink(props: params) {
 
 export default function Sidebar({ toggleSidebar }: { toggleSidebar: () => void }) {
     return (
-        <div className=" h-screen overflow-hidden w-full hiddenblock md:w-[20rem] bg-[#fdfaf1] ">
+        <div className=" h-screen overflow-hidden w-full hidden md:block md:w-[20rem] bg-[#fdfaf1] ">
             <nav className=" h-[var(--header-height)] flex items-center  w-full  text-white py-1 border-b ">
                 <nav className="px-5 flex items-center h-3/4 object-contain">
                     <Image className=" object-contain h-full  " src="/images/slicomlogo.png" alt="slico-icon" width={150} height={100} quality={100} />

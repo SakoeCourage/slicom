@@ -19,7 +19,7 @@ function institutionform() {
                 <Button variant='outline' size='sm'>
                     Cancel
                 </Button>
-                <Button variant='success' size='sm'>
+                <Button variant='primary' size='sm'>
                     Save
                 </Button>
             </nav>

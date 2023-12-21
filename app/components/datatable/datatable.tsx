@@ -78,12 +78,12 @@ function DataTable<TData, TValue, K extends keyof TData>({
             </nav>}
             {enableFilterOptions && <TableFilterOptions filterable={filterable as string} actionName={actionName} table={table} onAction={onAction} />}
             <Table >
-                <TableHeader className=' bg-orange-50/50'>
+                <TableHeader className=' '>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <TableRow key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <TableHead className='  text-gray-700  whitespace-nowrap flex-nowrap' key={header.id}>
+                                    <TableHead className='  text-gray-700 font-medium  whitespace-nowrap flex-nowrap' key={header.id}>
                                         {header.isPlaceholder
                                             ? null
                                             : flexRender(
@@ -107,7 +107,7 @@ function DataTable<TData, TValue, K extends keyof TData>({
                     {table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => (
                             <TableRow
-                                className=' text-gray-700 font-normal'
+                                className=' text-gray-600 font-normal table-tr'
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"} >
                                 {row.getVisibleCells().map((cell) => (
