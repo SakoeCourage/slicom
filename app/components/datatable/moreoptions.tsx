@@ -5,7 +5,8 @@ import {
     DropdownMenuItem,
 } from "app/app/components/ui/dropdown";
 import IconifyIcon from "../ui/Iconsbutton";
-
+import { useEffect, useState } from "react";
+import classNames from "classnames";
 const optionThemes = {
     "danger": "#ef4444",
     "primary": "#f97316",
@@ -27,13 +28,21 @@ interface ITableoption {
  * 
  */
 const Moreoptions = ({ options }: { options: ITableoption[] }) => {
+    const [isOpened, setisOpened] = useState<boolean>(false)
+
+
     return (
-        <DropdownMenu >
+        <DropdownMenu onOpenChange={setisOpened} >
             <DropdownMenuTrigger>
                 <IconifyIcon
-                    fontSize="2rem"
-                    className="text-gray-500 active:text-green-500 focus:text-green-500 "
-                    icon="solar:menu-dots-square-linear"
+                    fontSize="1.2rem"
+                    className={
+                        classNames({
+                            "text-gray-500 bg-gray-100 hover:bg-gray-200 transition-all active:text-green-500 focus:text-green-500 ": true,
+                            "!bg-gray-300 text-white scale-105 ": isOpened
+                        })
+                    }
+                    icon="radix-icons:dots-vertical"
                 />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="flex flex-col bg-white z-50">
