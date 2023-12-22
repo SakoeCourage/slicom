@@ -72,7 +72,7 @@ const Simplestepper: React.FC<IStepperOPtions> = (props) => {
                 </div>
             </div>
 
-            <nav className="!bg-white py-5 px-5 rounded-md border">
+            <nav className="!bg-white py-5 px-5 rounded-md border mt-2">
                 <nav className="flex ml-auto items-center justify-end gap-3">
                     <Button
                         onClick={(e: React.FormEvent) => {
@@ -89,7 +89,7 @@ const Simplestepper: React.FC<IStepperOPtions> = (props) => {
                             e.preventDefault();
                             onNextStep();
                         }}
-                        variant="success"
+                        variant="primary"
                         className="flex items-center gap-2"
                     >
                         {isLastStep() ? "Finsih" : "Continue"}

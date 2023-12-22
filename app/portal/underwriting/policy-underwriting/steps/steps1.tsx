@@ -12,10 +12,10 @@ export function Step1() {
                 {/* Client Information */}
                 <div className=' grid grid-cols-1 gap-5 !bg-white pb-10 pt-5 px-5 rounded-md border'>
                     <nav className=' flex items-center !gap-1 border-b pb-3 !px-0 font-semibold text-gray-500'>
-                        <IconifyIcon icon="carbon:customer-service" className=' text-gray-900' /><span>Client Information</span>
-                        <Button className=' ml-auto flex items-center gap-1' variant="primary">
-                            <IconifyIcon fontSize="1rem" className='!text-white' icon="clarity:search-line" />
-                            <span>Get customer by search</span>
+                        <IconifyIcon icon="carbon:customer-service"  /><span>Client Information</span>
+                        <Button className=' ml-auto flex items-center gap-1' variant="outline">
+                            <IconifyIcon className=' bg-orange-50 text-orange-500' icon="clarity:search-line" />
+                            <span className=' text-sm whitespace-nowrap'>Get customer by search</span>
                         </Button >
                     </nav>
                     <Input label='First Name' placeholder='Enter First Name' name='FirstName' />
@@ -27,10 +27,10 @@ export function Step1() {
                 {/* Intermediary Infomation Information */}
                 <div className=' grid grid-cols-1 gap-5 !bg-white pb-10 pt-5 px-5 rounded-md border'>
                     <nav className=' flex items-center !gap-1 border-b pb-3 !px-0 font-semibold text-gray-500'>
-                        <IconifyIcon icon="streamline:information-desk-customer" className=' text-gray-900' /><span>Intermdiary Information</span>
-                        <Button className=' ml-auto flex items-center gap-1' variant="default">
-                            <IconifyIcon fontSize="1rem" className='!text-white' icon="clarity:search-line" />
-                            <span>Get Intermediary by search</span>
+                        <IconifyIcon  icon="streamline:information-desk-customer"  /><span>Intermdiary Information</span>
+                        <Button className=' ml-auto flex items-center gap-1' variant="outline">
+                            <IconifyIcon icon="clarity:search-line" className='bg-blue-50 text-blue-500' />
+                            <span className='text-sm whitespace-nowrap'>Get Intermediary by search</span>
                         </Button >
                     </nav>
                     <Input label='First Name' placeholder='Enter First Name' name='FirstName' />
@@ -44,7 +44,7 @@ export function Step1() {
             {/* Vehicle Information Section */}
             <div className=' grid grid-cols-1 gap-5 !bg-white pb-10 pt-5 px-5 rounded-md border'>
                 <nav className=' flex items-center !gap-1 border-b pb-3 !px-0 font-semibold text-gray-500'>
-                    <IconifyIcon icon="fluent:vehicle-car-profile-16-regular" className=' text-gray-900' /><span>Vehicle Information</span>
+                    <IconifyIcon icon="fluent:vehicle-car-profile-16-regular"  /><span>Vehicle Information</span>
                 </nav>
                 <nav className=' grid grid-cols-2 gap-5'>
                     <Input label='Registeration' placeholder='Enter Registeration' name='Registeration' />
