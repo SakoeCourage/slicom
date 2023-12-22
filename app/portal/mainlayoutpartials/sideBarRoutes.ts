@@ -15,8 +15,8 @@ export let sidebarRoutes: routesListWitSections =
                     icon: "streamline:chat-bubble-square-write-solid",
                     links: [
                         {
-                            title: "All Policies",
-                            link: '/underwriting/all'
+                            title: "Policy",
+                            link: '/underwriting/policy-underwriting'
                         },
                         {
                             title: "All Ncd",

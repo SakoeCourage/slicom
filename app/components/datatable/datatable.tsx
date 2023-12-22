@@ -8,6 +8,10 @@ import { ArrowUpDown } from "lucide-react"
 import TableFilterOptions from './partials/tablefilteroptions'
 
 
+export type IActionOptions =  {
+    asLink?: boolean,
+    link: string ,
+}
 
 interface DataTableProps<TData, TValue, K extends keyof TData> {
     columns: ColumnDef<TData, TValue>[];
@@ -16,6 +20,7 @@ interface DataTableProps<TData, TValue, K extends keyof TData> {
     sortableColumns?: (keyof TData)[];
     actionName?: string,
     onAction?: (event: React.MouseEvent<HTMLButtonElement>) => void,
+    actionOptions?: IActionOptions,
     enablePaginator?: boolean
     enableFilterOptions?: boolean,
     heading?: string
@@ -27,6 +32,7 @@ interface DataTableProps<TData, TValue, K extends keyof TData> {
  * @param data - Describes table data
  * @param actionName - Describes the placeholder for table action button
  * @param onAction - Action for when action button is clicked 
+ * @param actionOptions - Set of options to be treated to the action button 
  * @param enableFilterOptions - Show table filter section ie. top of the table 
  * @param enablePaginator - Show table pagination section ie. buttom of the table 
  * @param heading - Describes table heading text
@@ -44,7 +50,11 @@ function DataTable<TData, TValue, K extends keyof TData>({
     onAction,
     enableFilterOptions = true,
     enablePaginator = true,
-    heading
+    heading,
+    actionOptions = {
+        asLink: false,
+        link: ""
+    },
 }: DataTableProps<TData, TValue, K>) {
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -76,7 +86,7 @@ function DataTable<TData, TValue, K extends keyof TData>({
                 <svg className="my-auto" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2" /></svg>
                 <nav className=''>{heading}</nav>
             </nav>}
-            {enableFilterOptions && <TableFilterOptions filterable={filterable as string} actionName={actionName} table={table} onAction={onAction} />}
+            {enableFilterOptions && <TableFilterOptions actionOptions={actionOptions} filterable={filterable as string} actionName={actionName} table={table} onAction={onAction} />}
             <Table >
                 <TableHeader className=' '>
                     {table.getHeaderGroups().map((headerGroup) => (

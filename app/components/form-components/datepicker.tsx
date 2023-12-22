@@ -25,7 +25,7 @@ type IdatePickerParams = {
 
 export default function datepicker({ label, required, placeholder, className, onSelect, selected, mode, ...rest }: IdatePickerParams) {
   const [date, setDate] = React.useState<Date>()
-  
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -37,11 +37,11 @@ export default function datepicker({ label, required, placeholder, className, on
             // onClick={(e) => e.preventDefault()}
             variant="outline"
             className={cn(
-              "w-[280px] !justify-start py-1 items-center text-left font-normal",
+              "w-[280px] !justify-start !py-2 items-center text-left font-normal",
               !date && "text-muted-foreground"
             )}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
+            <CalendarIcon className="mr-2 h-5 w-4" />
             {date ? format(date, "PPP") : <span>{placeholder ?? "Pick a date"} </span>}
           </Button>
         </nav>

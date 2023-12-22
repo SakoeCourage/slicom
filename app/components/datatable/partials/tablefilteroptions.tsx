@@ -1,16 +1,19 @@
 "use client"
 import React from 'react'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown"
+import { IActionOptions } from '../datatable'
+import Link from 'next/link'
 
 interface IOptionsProps<TData extends import("@tanstack/table-core").Table<TData>> {
     filterable?: string
     table: TData,
     actionName?: string,
+    actionOptions: IActionOptions
     onAction?: (event: React.MouseEvent<HTMLButtonElement>) => void,
 }
 
 function TableFilterOptions<TData extends import("@tanstack/table-core").Table<TData>>(props: IOptionsProps<TData>): React.JSX.Element {
-    const { filterable, table, actionName, onAction } = props
+    const { filterable, table, actionName, actionOptions, onAction } = props
 
     return (
         <div className="flex items-center p-4">
@@ -52,10 +55,18 @@ function TableFilterOptions<TData extends import("@tanstack/table-core").Table<T
                             })}
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <button onClick={(e) => onAction && onAction(e)} className=" border-gray-300 border rounded-md text-sm py-2 px-3  flex items-center flex-nowrap gap-1 bg-orange-400/80 text-white ml-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" /></svg>
-                    <span className=' whitespace-nowrap'>{actionName ?? "New"}</span>
-                </button>
+                {
+                    !actionOptions.asLink ? <button onClick={(e) => onAction && onAction(e)} className=" border-gray-300 border rounded-md text-sm py-2 px-3  flex items-center flex-nowrap gap-1 bg-orange-400/80 text-white ml-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" /></svg>
+                        <span className=' whitespace-nowrap'>{actionName ?? "New"}</span>
+                    </button> :
+                        <Link href={actionOptions?.link} className=" border-gray-300 border rounded-md text-sm py-2 px-3  flex items-center flex-nowrap gap-1 bg-orange-400/80 text-white ml-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" /></svg>
+                            <span className=' whitespace-nowrap'>{actionName ?? "New"}</span>
+                        </Link>
+
+
+                }
             </div>
         </div>
     )
