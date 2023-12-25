@@ -19,8 +19,20 @@ export function formatcurrency(amount: number): string | undefined {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GHS', notation: 'standard' }).format(amount)
 }
 
-export function dateReformat(date:string): string | undefined{
+export function dateReformat(date: string): string | undefined {
   if (date) {
-      return (dayjs(date).format('DD/MM/YYYY'))
+    return (dayjs(date).format('DD/MM/YYYY'))
   }
 }
+
+export const debounce = <T extends (...args: any[]) => void>(func: T, delay: number) => {
+  let timeoutId: NodeJS.Timeout | null = null;
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeoutId as NodeJS.Timeout);
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
+
+

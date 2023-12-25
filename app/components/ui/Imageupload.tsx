@@ -5,10 +5,10 @@ import ImageUploading, { ImageType } from "react-images-uploading";
 interface BlankImagePlaceholderProps {
   onImageUpload: () => void;
   isDragging: boolean;
-  dragProps: Record<string, any>;
+  dragProps?: Record<string, any>;
 }
 
-function BlankImagePlaceholder({
+export function BlankImagePlaceholder({
   onImageUpload,
   isDragging,
   dragProps,
@@ -17,15 +17,13 @@ function BlankImagePlaceholder({
     <div
       onClick={onImageUpload}
       {...dragProps}
-      className={`max-w-sm mx-auto w-full  cursor-pointer ${
-        isDragging && "opacity-50"
-      }`}
+      className={`max-w-sm mx-auto w-full  cursor-pointer ${isDragging && "opacity-50"
+        }`}
     >
       <nav className="border-2 rounded-md overflow-hidden flex items-center justify-center h-full w-full  aspect-square  ">
         <nav
-          className={`flex flex-col items-center gap-2 ${
-            isDragging && " pointer-events-none"
-          }`}
+          className={`flex flex-col items-center gap-2 ${isDragging && " pointer-events-none"
+            }`}
         >
           <svg
             width="30"
@@ -40,7 +38,7 @@ function BlankImagePlaceholder({
             />
           </svg>
           <span className="font-medium text-center">
-            {isDragging ? "Drop  here" : "Click or drop files here"}
+            {isDragging ? "Drop files here" : "Click or drop files here"}
           </span>
         </nav>
       </nav>
@@ -81,6 +79,9 @@ function ImageUpload({
     acceptType: " One or more image format not supported",
   };
 
+
+
+
   return (
     <ImageUploading
       multiple
@@ -92,7 +93,7 @@ function ImageUpload({
         onError && onError(mapErrorMessage[Object.keys(err)[0]])
       }
       dataURLKey="data_url"
-      acceptType={["jpg", "png"]}
+      acceptType={["jpg", "png", "pdf"]}
     >
       {({
         imageList,
@@ -118,11 +119,12 @@ function ImageUpload({
                 className=" aspect-square w-full h-full object-cover relative"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                
                 <img
                   src={image.data_url}
                   alt=""
                   width=""
-                  className=" w-full h-full aspect-square"
+                  className=" w-full h-full object-contain aspect-square"
                 />
                 <div className="absolute top-1 right-1">
                   <button onClick={() => onImageRemove(index)}>

@@ -12,12 +12,17 @@ function page() {
                 <nav className=' font-semibold text-gray-600 text-base uppercase text-left'>New Policy</nav>
             </nav>
             <div className="flex flex-col gap-5 !py-2" >
-                <div className='grid border-b !bg-white grid-cols-3 py-10 px-5 rounded-md border gap-x-5 gap-y-10'>
+                <div className='grid border-b !bg-white grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 px-5 rounded-md border gap-x-5 gap-y-10'>
                     <Input name='PolicyNumber' label='Policy Number' placeholder='Enter Policy Number' />
                     <Input name='DebitNumber' label='Debit Number' placeholder='Enter Debit Number' />
                     <Input name='StickerNumber' label='Sticker Number' placeholder='Enter Sticker Number' />
                 </div>
-                <Simplestepper steps={stepList} />
+                <Simplestepper steps={stepList} options={{
+                    scrollable: {
+                        enable: true,
+                        scrollableElement: "#outlet"
+                    }
+                }} />
             </div>
         </div>
     )

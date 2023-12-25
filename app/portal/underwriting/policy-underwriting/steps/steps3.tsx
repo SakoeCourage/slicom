@@ -8,10 +8,10 @@ import { Input } from 'app/app/components/form-components/input';
 export function Step3() {
     return (
         <div className="grid grid-cols-1 gap-5 mb-5">
-            <div className="grid grid-cols-2 gap-x-5 gap-y-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-10">
                 <div className=" grid grid-cols-1 gap-5 !bg-white pb-10 pt-5 px-5 rounded-md border">
                     <nav className=" flex items-center !gap-1 border-b pb-3 !px-0 font-semibold text-gray-500">
-                        <IconifyIcon icon="grommet-icons:money" className=" text-gray-600" />
+                        <IconifyIcon icon="grommet-icons:money" className=" " />
                         <span>Premium Computation</span>
                     </nav>
                     <Input
@@ -37,7 +37,7 @@ export function Step3() {
 
                 <div className=" h-max grid grid-cols-1 gap-5 !bg-white pb-10 pt-5 px-5 rounded-md border">
                     <nav className=" flex items-center !gap-1 border-b pb-3 !px-0 font-semibold text-gray-500">
-                        <IconifyIcon icon="grommet-icons:money" className=" text-gray-600" />
+                        <IconifyIcon icon="grommet-icons:money" className=" " />
                         <span>Total Premium Payerables</span>
                     </nav>
                     <Input

@@ -14,7 +14,7 @@ export function Step2() {
                     />
                     <span>Policy Information</span>
                 </nav>
-                <nav className=" grid grid-cols-2 gap-5">
+                <nav className=" grid grid-cols-1 md:grid-cols-2 gap-5">
                     <Input
                         label="Currency"
                         placeholder="Enter Currency"
@@ -60,14 +60,14 @@ export function Step2() {
                         name="Expiry Date"
                     />
                 </nav>
-                <nav className=" grid grid-cols-2 gap-5">
+                <nav className=" grid grid-cols-1 md:grid-cols-2 gap-5">
                     <Input
                         label="Sum Insured"
                         placeholder="Enter Sum Insured"
                         name="Sum Insured"
                     />
                     <Input label="Rate" placeholder="Enter Rate" name="Rate" />
-                    <nav className=" col-span-2">
+                    <nav className=" md:col-span-2">
                         <Input label="Excess" placeholder="Enter Excess" name="Yor" />
                     </nav>
                     <Input label="Excess Rate" placeholder="0.00" name="Yor" />
@@ -77,7 +77,7 @@ export function Step2() {
                         placeholder="0.00"
                         name="Excess Amount"
                     />
-                    <nav className=" col-span-2">
+                    <nav className=" md:col-span-2">
                         <Input
                             label="Co  Insure"
                             placeholder="Enter Co  Insure"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import {
     IStepperOPtions,
     getCurrentStep,
@@ -6,14 +6,20 @@ import {
     onPrevStep,
     isLastStep,
     isFirstStep,
+    onStepChange,
+    stepperOptions
 } from "./steppertypes";
+import classNames from "classnames";
+import Step from "./step";
 
 import { Button } from "app/app/components/form-components/button";
 
 const Simplestepper: React.FC<IStepperOPtions> = (props) => {
     const [currentStepIndex, setCurrentStepIndex] = React.useState<number>(0);
-    const { steps } = props;
-    let Component = steps[currentStepIndex].component;
+    const { steps, onStepChange, options } = props;
+    const currentStepElRef = useRef<HTMLDivElement | null>(null)
+
+    const isMounted = useRef(false);
 
     const getCurrentStep: getCurrentStep = () => {
         let c_step = steps.at(currentStepIndex);
@@ -28,74 +34,101 @@ const Simplestepper: React.FC<IStepperOPtions> = (props) => {
         return currentStepIndex == 0;
     };
 
-    const scrollToTop = () => {
-        var container = document.querySelector(".policy-page");
+    const getStepOffsetTop = (scrollableContainer: string, currentStepEl: string): number => {
+        let parentElement = document.querySelector(scrollableContainer) as HTMLElement | null;
+        let childElement = document.querySelector("#stepper-" + currentStepIndex) as HTMLElement | null;
+        // console.log(childElement)
+        let offsetTop = 0;
+        while (childElement && childElement !== parentElement) {
+            offsetTop += childElement.offsetTop;
+            childElement = childElement.offsetParent as HTMLElement | null;
+        }
+        // console.log(offsetTop) 
 
-        if (container != null) {
-            container.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
+        /**
+         * removed 60 from offset top to compensate the headerHeight i.e 56px : 4rem
+         */
+        return offsetTop - 60;
+    }
+
+    const handleOnscroll = (scrollerbleEl: string, offset?: number) => {
+        var container = document.querySelector(scrollerbleEl);
+        if (container == null) throw new Error("Element not found: " + scrollerbleEl)
+        var c_step = `.stepper-active`;
+        container.scrollTo({
+            top: offset ?? getStepOffsetTop(scrollerbleEl, c_step),
+            behavior: "instant",
+        });
+    }
+
+
+    const handleOnStepChange = (): void => {
+        if (onStepChange) {
+            onStepChange(steps[currentStepIndex]);
+        }
+        if (options) {
+            const { scrollable } = options;
+            if (scrollable) handleOnscroll(scrollable.scrollableElement, scrollable.offset);
         }
     };
 
     const onNextStep: onNextStep = () => {
         if (!isLastStep()) {
+            isMounted.current = true
             setCurrentStepIndex((cv) => (cv = cv + 1));
-            scrollToTop();
+            // handleOnStepChange()
         }
     };
+
+
     const onPrevStep: onPrevStep = () => {
         if (!isFirstStep()) {
-            setCurrentStepIndex((cv) => (cv = cv - 1));
-            scrollToTop();
+            isMounted.current = true
+            setCurrentStepIndex((cv) => cv - 1);
         }
     };
+
+    useEffect(() => {
+        if (isMounted.current) {
+            setTimeout(function () {
+                handleOnStepChange()
+            }, 100)
+        }
+    }, [currentStepIndex])
+
+
 
     return (
         <div className="flex flex-col">
             <div>
                 <div className="flex flex-col gap-1">
-                    <nav className=" font-semibold text-gray-600">
-                        <nav className=" w-max ml-auto rounded-full bg-gray-100 py-2 px-5">
-                            Step <span className="text-gray-500">{currentStepIndex + 1}</span>
-                            /<span>{steps.length}</span>
-                        </nav>
-                    </nav>
-                    <Component
-                        onNextStep={onNextStep}
-                        onPrevStep={onPrevStep}
-                        isLastStep={isLastStep}
-                        isFirstStep={isFirstStep}
-                        getCurrentStep={getCurrentStep}
-                    />
+
+                    <div className=" flex flex-col bg-white rounded-md pr-1 py-3">
+                        {
+                            steps.map((step, i) => <Step
+                                currentStepIndex={currentStepIndex}
+                                setCurrentStepIndex={setCurrentStepIndex}
+                                steps={steps}
+                                ref={currentStepElRef}
+                                key={i}
+                                isCompleted={currentStepIndex > i}
+                                active={currentStepIndex == i}
+                                index={i}
+                                onNextStep={onNextStep}
+                                onPrevStep={onPrevStep}
+                                isLastStep={isLastStep}
+                                getCurrentStep={getCurrentStep}
+                                label={step.label}
+                                Component={step.component}
+
+                            />)
+                        }
+
+                    </div>
                 </div>
             </div>
 
-            <nav className="!bg-white py-5 px-5 rounded-md border mt-2">
-                <nav className="flex ml-auto items-center justify-end gap-3">
-                    <Button
-                        onClick={(e: React.FormEvent) => {
-                            e.preventDefault();
-                            onPrevStep();
-                        }}
-                        variant="outline"
-                        className="flex items-center gap-2"
-                    >
-                        Previous
-                    </Button>
-                    <Button
-                        onClick={(e: React.FormEvent) => {
-                            e.preventDefault();
-                            onNextStep();
-                        }}
-                        variant="primary"
-                        className="flex items-center gap-2"
-                    >
-                        {isLastStep() ? "Finsih" : "Continue"}
-                    </Button>
-                </nav>
-            </nav>
+
         </div>
     );
 };

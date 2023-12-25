@@ -22,7 +22,7 @@ export default function RootLayout({
             {/* Main  section header */}
             <Header />
 
-            <section className='h-[calc(100vh-var(--header-height))] bg-gray-50/60 pb-4 overflow-y-scroll overflow-x-hidden'>
+            <section id='outlet' className='h-[calc(100vh-var(--header-height))] bg-gray-50/60 pb-4 overflow-y-scroll overflow-x-hidden '>
               <Breadcrumbserviceprovider>
                 {children}
               </Breadcrumbserviceprovider>
