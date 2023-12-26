@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import Selectoption from 'app/app/components/form-components/selectoption';
 import IconifyIcon from 'app/app/components/ui/Iconsbutton';
 import { Button } from 'app/app/components/form-components/button';
-import ImageUpload from 'app/app/components/ui/Imageupload';
+import ImageUpload from 'app/app/components/ui/blankimageplaceholder';
 import { Input } from 'app/app/components/form-components/input';
 import { stepperApi } from '../stepper/steppertypes';
 import EmptyResults from 'app/app/components/form-components/emptysearch';
@@ -110,7 +110,7 @@ export function Step1() {
                     <span>Registeration Document (PDF,PNG,JPEG)</span>
                 </nav>
                 {/* <ImageUpload /> */}
-                <Fileupload acceptType={['image/jpeg','image/jpg',"image/png","application/pdf",'application/zip']} />
+                <Fileupload maxNumber={2}  />
             </div>
         </div>
     )

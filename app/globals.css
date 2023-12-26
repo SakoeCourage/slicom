@@ -251,6 +251,8 @@ body {
 
 
 
+
+
 /* slideUp */
 @-webkit-keyframes slideUp {
     0% {
@@ -297,4 +299,8 @@ body {
     -moz-animation: slideUp 0.7s cubic-bezier(0.08, 0.82, 0.17, 1) ;
     -o-animation: slideUp 0.7s cubic-bezier(0.08, 0.82, 0.17, 1) ;
     animation: slideUp 0.7s cubic-bezier(0.08, 0.82, 0.17, 1) ;
+}
+
+.text-decoration-none{
+    text-decoration: none;
 }

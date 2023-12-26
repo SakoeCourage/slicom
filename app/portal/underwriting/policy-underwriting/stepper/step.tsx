@@ -42,11 +42,7 @@ const step = forwardRef((props: stepParam, ref: ForwardedRef<HTMLDivElement | nu
         debouncedResetScrollHeight();
     }, [stepperContent, active]);
 
-    useEffect(() => {
-        active && console.log(scrollHeight)
-    }, [scrollHeight])
-
-
+ 
     useEffect(() => {
         //Adding window resize listener for current content
         window.addEventListener('resize',debouncedResetScrollHeight, true);
@@ -98,9 +94,9 @@ const step = forwardRef((props: stepParam, ref: ForwardedRef<HTMLDivElement | nu
                     style={{ height: active ? "100%" : "0px" }}
                     ref={stepperContent}
                     className={classNames({
-                        "flex flex-col overflow-hidden transition-[padding] ease-in-out duration-500": true,
-                        "": active,
-                        "pt-5": !active,
+                        "flex flex-col overflow-hidden transform-none transition-[padding] duration-100": true,
+                        "u--slideUp": active,
+                        "pt-5 -translate-y-[10%]": !active,
                     })}>
 
                     <div className=" py-4">

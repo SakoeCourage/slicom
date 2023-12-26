@@ -2,7 +2,7 @@ import React from 'react'
 import Selectoption from 'app/app/components/form-components/selectoption';
 import IconifyIcon from 'app/app/components/ui/Iconsbutton';
 import { Button } from 'app/app/components/form-components/button';
-import ImageUpload from 'app/app/components/ui/Imageupload';
+import ImageUpload from 'app/app/components/ui/blankimageplaceholder';
 import { Input } from 'app/app/components/form-components/input';
 
 export function Step3() {

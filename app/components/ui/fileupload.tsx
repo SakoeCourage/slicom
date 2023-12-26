@@ -1,7 +1,9 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import useFileUpload from 'react-use-file-upload';
-import { BlankImagePlaceholder } from './Imageupload';
+import { BlankImagePlaceholder } from './blankimageplaceholder';
 import IconifyIcon from './Iconsbutton';
+import { toaster } from 'app/app/providers/Toastserviceprovider';
+
 type regularExtensions = "image/jpeg" | "image/jpg" | "image/png" | "application/pdf" | "application/msword" | "application/vnd.ms-excel" | "application/zip"
 
 const regularExtensionsArray: regularExtensions[] = [
@@ -15,9 +17,9 @@ const regularExtensionsArray: regularExtensions[] = [
 ];
 
 const errorMessages = {
-    maxFileSize: " One or more image Exceeded recommended size",
-    maxNumber: ` Maximum Number of Images Exceeded`,
-    acceptType: " One or more image format not supported",
+    maxFileSize: " One or more file exceeded recommended size",
+    maxNumber: ` Maximum number of file exceeded`,
+    acceptType: " One or more file format not supported",
 };
 
 type Rule = keyof typeof errorMessages;
@@ -40,7 +42,7 @@ const isValidationError = (error: validationErrors): error is hasValidationError
 
 
 interface fileUploadProps {
-    getImages?: (files: File[]) => void;
+    getFiles?: (files: File[]) => void;
     files?: File[] | undefined;
     maxNumber?: number;
     maxFileSize?: number;
@@ -48,7 +50,13 @@ interface fileUploadProps {
     acceptType?: regularExtensions[]
 }
 
-const fileupload = ({ getImages,
+
+/**
+ * 
+ * @param  [maxFileSize] - in bytes default 10485760 i.e 10mb -  10240Kb
+ * @returns 
+ */
+const fileupload = ({ getFiles,
     files: propFiles,
     maxNumber,
     maxFileSize = 10485760,
@@ -119,16 +127,16 @@ const fileupload = ({ getImages,
         let validationErrors: string[] = []
         const validationRules = getValidationRules()
         const validatorError = ruleValidator(validationRules, file)
-        if (!!validatorError.length) console.log(validationErrors)
-        if (!!validatorError.length) return { error: validatorError, file: null }
 
+        if (!!validatorError.length) return { error: validatorError, file: null }
+        
         return { error: null, file: file }
     }
 
     const handleOnFileChange = (event: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>) => {
         setlvErrors([])
         onError && onError([])
-        
+
         const dataTransfer: DataTransfer = new DataTransfer();
         let validationErrors: string[] = [];
 
@@ -149,7 +157,7 @@ const fileupload = ({ getImages,
                 try {
                     handleMaxNumberValidation(Ifiles)
                     Array.from(Ifiles).forEach(handleFileValidation);
-                } catch (error) {
+                } catch (error){
                     validationErrors.push(errorMessages.maxNumber)
                 }
             }
@@ -165,11 +173,14 @@ const fileupload = ({ getImages,
                 }
             }
         }
+        
         setFiles({ dataTransfer }, 'a');
+        getFiles && getFiles(files)
 
         if (validationErrors.length > 0) {
             setlvErrors(validationErrors)
             onError && onError(validationErrors)
+            validationErrors.forEach(err => toaster(err, 'Error'))
         }
 
         inputRef.current!.value = "";
@@ -228,12 +239,12 @@ const fileupload = ({ getImages,
                             ["application/pdf"].includes(file.type) ?
                                 <div className='truncate flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
                                     <IconifyIcon className=' !h-16 !w-16' fontSize="3.5rem" icon='vscode-icons:file-type-pdf2' />
-                                    <nav className=' truncate text-gray-600'>{file.name}</nav>
+                                    <abbr title={file.name} className=' text-center text-decoration-none truncate text-gray-600 w-full'>{file.name}</abbr>
                                 </div>
                                 :
                                 <div className='truncate flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
-                                    <IconifyIcon className=' !h-16 !w-16' fontSize="3.5rem" icon='basil:file-outline"' />
-                                    <nav className=' truncate text-gray-600'>{file.name}</nav>
+                                    <IconifyIcon className=' !h-16 !w-16 text-gray-500' fontSize="3.5rem" icon='basil:file-outline' />
+                                    <abbr title={file.name} className=' text-center text-decoration-none truncate text-gray-600 w-full'>{file.name}</abbr>
                                 </div>
 
                         }

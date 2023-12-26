@@ -44,7 +44,7 @@ export let sidebarRoutes: routesListWitSections =
                         },
                         {
                             title: "All Stickers",
-                            link: '/stickers/all'
+                            link: '/stickers/all-prices'
                         },
                     ],
                 },

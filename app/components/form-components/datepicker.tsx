@@ -13,17 +13,19 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "./partial/popovercomponents"
+import { space } from "postcss/lib/list"
 
 
 type IdatePickerParams = {
   label?: string,
   required?: boolean,
   placeholder?: string,
-  className?: string
+  className?: string,
+  name?: string,
 } & CalendarProps
 
 
-export default function datepicker({ label, required, placeholder, className, onSelect, selected, mode, ...rest }: IdatePickerParams) {
+export default function datepicker({ label, name,required, placeholder, className, onSelect, selected, mode, ...rest }: IdatePickerParams) {
   const [date, setDate] = React.useState<Date>()
 
   return (
@@ -37,12 +39,12 @@ export default function datepicker({ label, required, placeholder, className, on
             // onClick={(e) => e.preventDefault()}
             variant="outline"
             className={cn(
-              "w-[280px] !justify-start !py-2 items-center text-left font-normal",
+              "w-[280px] !justify-start h-10 !py-2 items-center text-left font-normal",
               !date && "text-muted-foreground"
             )}
           >
             <CalendarIcon className="mr-2 h-5 w-4" />
-            {date ? format(date, "PPP") : <span>{placeholder ?? "Pick a date"} </span>}
+            {date ? <span className=" whitespace-nowrap truncate">{format(date, "d/M/Y")}</span> : <span className=" whitespace-nowrap truncate">{placeholder ?? "Pick a date"} </span>}
           </Button>
         </nav>
       </PopoverTrigger>
