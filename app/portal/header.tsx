@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
-import IconifyIcon from './components/ui/Iconsbutton'
-import { DropdownMenu, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuSeparator } from './components/ui/dropdown'
+import IconifyIcon from '../components/ui/Iconsbutton'
+import { DropdownMenu, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuSeparator } from '../components/ui/dropdown'
 import Link from 'next/link'
 
 const Accountsmenu = (): React.JSX.Element => {

@@ -60,7 +60,7 @@ export const columns: ColumnDef<IPolicyDTO>[] = [
                 [
                     { optionName: "View", onOptionSelected: () => console.log(), icon: "carbon:view", theme: 'secondary' },
                     { optionName: "Edit", onOptionSelected: () => console.log(), icon: "basil:edit-outline", theme: 'secondary' },
-                    { optionName: `${"Approve"}`, onOptionSelected: () => console.log(), icon: "simple-line-icons:check", theme: 'secondary' },
+                    { optionName: `Approve`, onOptionSelected: () => console.log(), icon: "simple-line-icons:check", theme: 'secondary' },
                     { optionName: "Apply Discount", onOptionSelected: () => console.log(), icon: "tdesign:discount", theme: 'secondary' },
                 ]
             }

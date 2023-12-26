@@ -2,11 +2,11 @@
 const nextConfig = {
     async rewrites() {
         return [
-
             {
                 source: '/:path*',
                 destination: '/portal/:path*',
             }
+       
         ]
     },
     async redirects() {
@@ -14,6 +14,11 @@ const nextConfig = {
             {
                 source: '/',
                 destination: '/dashboard',
+                permanent: true
+            },
+            {
+                source: '/login',
+                destination: '/auth/login',
                 permanent: true
             },
         ]

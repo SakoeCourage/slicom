@@ -84,7 +84,8 @@ body {
 
 :root {
     --primary-bg-gray: #fdfdfe;
-    --header-height: 4rem
+    --header-height: 4rem;
+    --sidebar-width: 17rem;
 }
 
 body {
@@ -249,10 +250,6 @@ body {
 }
 
 
-
-
-
-
 /* slideUp */
 @-webkit-keyframes slideUp {
     0% {
@@ -303,4 +300,40 @@ body {
 
 .text-decoration-none{
     text-decoration: none;
+}
+
+
+.login-page{
+    position: inherit;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.login-page::before{
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: #fff;
+}
+.login-page::after{
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    @apply bg-gradient-to-br from-orange-300 via-amber-600 to-orange-600
+}
+
+
+.add-ts {
+    text-shadow: 2px 4px 3px rgba(99, 99, 76, 0.4);
 }
