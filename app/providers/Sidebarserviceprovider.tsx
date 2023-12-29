@@ -1,4 +1,5 @@
-import React, { useState, createContext, useContext, useEffect } from 'react'
+"use client"
+import React, { useState, createContext, useContext, useEffect, useRef, useLayoutEffect } from 'react'
 const sideBarContext = createContext({});
 
 const miniSidebarLocalStorageKey: string = "sidebar-mini"
@@ -11,7 +12,15 @@ interface sidebarContextParams {
     sidebarStateOpen: sideBarOpenstateOptions,
     setSidebarStateOpen: React.Dispatch<React.SetStateAction<sideBarOpenstateOptions>>
     toggleSideBar: () => void,
-    toggleMiniSidebar: () => void
+    toggleMiniSidebar: () => void,
+    sidebarItemLocation: { top: number; left: string }
+    setSidebarItemLocation: React.Dispatch<React.SetStateAction<{ top: number; left: string }>>
+    setPopupVisible: React.Dispatch<React.SetStateAction<boolean>>,
+    isPopupVisible: boolean
+    visibilityTimeout: React.MutableRefObject<NodeJS.Timeout | null>
+    handleLeave: () => void,
+    currentPopupElement: React.JSX.Element | null,
+    setCurrentPopupElement: React.Dispatch<React.SetStateAction<React.JSX.Element | null>>
 }
 interface ISidebarparams {
     children: React.ReactNode
@@ -20,9 +29,27 @@ interface ISidebarparams {
 function Sidebarserviceprovider({ children }: ISidebarparams) {
     const [sidebarStateOpen, setSidebarStateOpen] = useState<sideBarOpenstateOptions>(
         {
-            mini: localStorage.getItem(miniSidebarLocalStorageKey) ? true : false,
+            mini: false,
             full: false
         })
+
+    const visibilityTimeout = useRef<NodeJS.Timeout | null>(null);
+    const [isPopupVisible, setPopupVisible] = useState(false);
+    const [sidebarItemLocation, setSidebarItemLocation] = useState({
+        top: 0,
+        left: ""
+    })
+    const [currentPopupElement, setCurrentPopupElement] = useState<React.JSX.Element | null>(null)
+
+    const handleLeave = () => {
+        if (visibilityTimeout.current) {
+            clearTimeout(visibilityTimeout.current)
+        }
+        visibilityTimeout.current = setTimeout(() => {
+            setPopupVisible(false)
+        }, 200)
+    };
+
     const toggleSideBar = (): void => setSidebarStateOpen({
         full: false,
         mini: sidebarStateOpen.mini
@@ -59,7 +86,27 @@ function Sidebarserviceprovider({ children }: ISidebarparams) {
         return () => window.removeEventListener('resize', handleOnWindowResize, true)
     }, [])
 
-    const values: sidebarContextParams = { sidebarStateOpen, setSidebarStateOpen, toggleSideBar, toggleMiniSidebar }
+    useLayoutEffect(() => {
+        setSidebarStateOpen({
+            mini: localStorage.getItem(miniSidebarLocalStorageKey) ? true : false,
+            full: false
+        })
+    }, [])
+
+    const values: sidebarContextParams = {
+        sidebarStateOpen,
+        setSidebarStateOpen,
+        toggleSideBar,
+        toggleMiniSidebar,
+        isPopupVisible,
+        setPopupVisible,
+        currentPopupElement,
+        setCurrentPopupElement,
+        handleLeave,
+        visibilityTimeout,
+        setSidebarItemLocation,
+        sidebarItemLocation
+    }
 
     return (
         <sideBarContext.Provider value={values}>

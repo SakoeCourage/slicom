@@ -112,12 +112,32 @@ body {
 }
 
 .route-inactive .route-icon {
-    @apply bg-orange-100 text-orange-600
+    @apply bg-orange-400/80 text-white
 }
 
 .route-inactive .route-title {
     @apply !text-gray-700
 }
+
+.add-glassmorphism{
+    isolation: isolate;
+    position: relative;
+    z-index: 50;
+  
+}
+
+.add-glassmorphism::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 40;
+    background-color: rgba(180, 180, 180, 0.068);
+    backdrop-filter: blur(4px) ;
+    -webkit-backdrop-filter: blur(4px) ;
+}
+
 
 .hiddenscroll::-webkit-scrollbar {
     display: none;
@@ -332,13 +352,7 @@ body {
     right: 0;
     bottom: 0;
     z-index: -1;
-    background: #D1913C;
-    background: -webkit-linear-gradient(left top, #D1913C, #D1913C);
-    background: -o-linear-gradient(bottom right, #D1913C, #D1913C);
-    background: -moz-linear-gradient(bottom right, #D1913C, #D1913C);
-    background: linear-gradient(to bottom right, #D1913C, #D1913C);
-
-
+    @apply bg-orange-400/60
 }
 
 
@@ -459,14 +473,15 @@ body {
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
     }
+
     to {
-      opacity: 1;
-      display: block;
+        opacity: 1;
+        display: block;
     }
-  }
-  
-  .transition-fadeIn {
+}
+
+.transition-fadeIn {
     animation: fadeIn 0.4s ease-in-out;
-  }
+}

@@ -104,7 +104,7 @@ function header() {
       }
       <IconifyIcon onClick={() => setSidebarStateOpen(cv => cv = { mini: cv.mini, full: true })} className=' !text-gray-500 cursor-pointer !bg-transparent md:hidden' icon='gravity-ui:bars-unaligned' />
 
-      <IconifyIcon onClick={() => toggleMiniSidebar()} className={`!text-gray-500 cursor-pointer !bg-transparent hidden md:block transform transition-transform add-customer-bezier ${sidebarStateOpen.mini && " scale-x-[-1] "}`} icon='gravity-ui:bars-unaligned' />
+      <IconifyIcon onClick={() => toggleMiniSidebar()} className={`!text-gray-500 cursor-pointer !bg-transparent hidden md:block transform transition-transform add-customer-bezier ${!sidebarStateOpen.mini && " scale-x-[-1] "}`} icon='gravity-ui:bars-unaligned' />
       <Accountsmenu />
     </div>
   )

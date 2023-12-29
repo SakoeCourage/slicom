@@ -2,9 +2,8 @@
 import React, { useEffect } from 'react'
 import Statsection from './partials/statsoverview/statsection'
 import Recentstickerpurchases from './partials/recentstickerpurchases'
-import Motoranalysis from './partials/motoranalysis'
-import { formatcurrency } from 'app/app/lib/utils'
-import Statschart from './partials/statsoverview/statschart'
+import dynamic from 'next/dynamic'
+const Statschart = dynamic(() => import('./partials/statsoverview/statschart'),   { ssr: false })
 function page() {
 
   return (

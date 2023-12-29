@@ -26,12 +26,12 @@ export let sidebarRoutes: routesListWitSections =
                 },
                 {
                     title: "Claims",
-                    icon: "teenyicons:money-solid",
+                    icon: "fa6-solid:money-check",
                     link: "/claims"
                 },
                 {
                     title: "Endorsements",
-                    icon: "mingcute:edit-fill",
+                    icon: "mdi:library-edit",
                     link: "/endorsements"
                 },
                 {
@@ -76,7 +76,7 @@ export let sidebarRoutes: routesListWitSections =
             routes: [
                 {
                     title: 'Intermediaries',
-                    icon: "heroicons:user-group-solid",
+                    icon: "ooui:user-group-rtl",
                     links: [
                         {
                             title: 'All Intermediaries',

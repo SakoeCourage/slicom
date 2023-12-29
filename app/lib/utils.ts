@@ -16,11 +16,9 @@ export function formatnumber(num: number): string | undefined {
 
 export function formatcurrency(amount: number): string | undefined {
   if (!amount) return;
+  const userLanguage = navigator?.language || 'en-US';
 
-  const userLanguage = navigator.language || 'en-US';
-
-  const countryCode = userLanguage.slice(-2);
-   console.log(countryCode)
+  const countryCode = userLanguage?.slice(-2);
   const formattedAmount = new Intl.NumberFormat(countryCode, {
     style: 'currency',
     currency: 'GHS',
