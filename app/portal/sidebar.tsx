@@ -36,29 +36,27 @@ export default function Sidebar() {
     return (
         <div className={`h-screen  overflow-visible   fixed  inset-0 z-50 md:z-auto md:relative md:block  bg-[#f5ebeb]  transition-[left] add-sidebar-bezier  ${sidebarStateOpen.mini ? 'w-[var(--sidebar-mini-width)]' : 'w-[var(--sidebar-width)]'}  ${sidebarStateOpen.full ? 'sidebaropened' : 'sidebarclosed'}`}>
             <AnimatePresence>
-                {sidebarStateOpen.mini && <>
+                {sidebarStateOpen.mini && isPopupVisible
+                    && <motion.div initial={{ opacity: 0.7 }}
+                        exit={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                        onMouseOver={() => { clearTimeout(visibilityTimeout.current!); setPopupVisible(true) }}
+                        onMouseOut={() => handleLeave()}
+                        className=" transition-all add-customer-bezier" style={{ position: 'fixed', zIndex: "50", left: sidebarItemLocation.left, top: sidebarItemLocation.top }}>
+                        {currentPopupElement}
+                    </motion.div>
+                }
+            </AnimatePresence>
+            <AnimatePresence>
+                {sidebarStateOpen.mini && isPopupVisible &&
+                    <motion.div initial={{ opacity: 0.6 }}
+                        exit={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.2 }} className=" fixed  inset-0 left-[var(--sidebar-mini-width)]  block transition-all add-customer-bezier duration-300  z-40 bg-gray-600/60">
 
-                    {isPopupVisible
-                        && <motion.div initial={{ opacity: 0.7 }}
-                            exit={{ opacity: 0.7 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                            onMouseOver={() => { clearTimeout(visibilityTimeout.current!); setPopupVisible(true) }}
-                            onMouseOut={() => handleLeave()}
-                            className=" transition-all add-customer-bezier" style={{ position: 'fixed', zIndex: "50", left: sidebarItemLocation.left, top: sidebarItemLocation.top }}>
-                            {currentPopupElement}
-                        </motion.div>
-                    }
-
-                    {isPopupVisible &&
-                        <motion.div initial={{ opacity: 0.6 }}
-                            exit={{ opacity: 0.6 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5 }} className=" fixed  inset-0 left-[var(--sidebar-mini-width)]  block transition-all add-customer-bezier duration-300  z-40 bg-gray-600/60">
-
-                        </motion.div>
-                    }
-                </>}
+                    </motion.div>
+                }
             </AnimatePresence>
 
             {/* </AnimatePresence> */}
