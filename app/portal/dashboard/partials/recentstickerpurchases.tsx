@@ -110,7 +110,7 @@ export default function recentstickerpurchases() {
 
 
     return (
-        <div className=" md:col-span-3">
+        <div className=" lg:col-span-3">
             <DataTable
                 enableFilterOptions={false}
                 enablePaginator={false}

@@ -3,6 +3,7 @@ import React from 'react'
 import IconifyIcon from '../components/ui/Iconsbutton'
 import { DropdownMenu, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuSeparator } from '../components/ui/dropdown'
 import Link from 'next/link'
+import { useSidebar } from '../providers/Sidebarserviceprovider'
 
 const Accountsmenu = (): React.JSX.Element => {
   const userName = "Sk JayKeys"
@@ -16,10 +17,13 @@ const Accountsmenu = (): React.JSX.Element => {
 
   return <DropdownMenu >
     <DropdownMenuTrigger asChild className=' ml-auto'>
-      <button className='flex items-center focus:outline-none  gap-1 min-w-[5rem] min-h-[3rem]  bg-gray-50 p-2 rounded-3xl'>
-        <IconifyIcon icon='ic:baseline-account-circle' className=' bg-orange-50 text-orange-300' fontSize={"2rem"} />
-        <span className=' font-medium text-gray-500 text-sm'>Jay Keys</span>
-        <IconifyIcon icon='mdi:chevron-down' className='bg-transparent' />
+      <button className='flex items-center focus:outline-none  gap-1 min-w-[5rem] min-h-[3rem]  bg-gray-50/40 px-1 py-[1px] rounded-3xl'>
+        <nav className=' mx-auto md:block hidden text-gray-500 px-2 '>Welcome Admin of Sierra Leone Insurance Commission</nav>
+        <nav className='flex items-center bg-white/90 border border-gray-50 focus:outline-none  gap-1 p-2 rounded-3xl'>
+          <IconifyIcon icon='ic:baseline-account-circle' className=' bg-gray-50 text-gray-300' fontSize={"2rem"} />
+          <span className=' font-medium text-gray-500 text-sm'>Jay Keys</span>
+          <IconifyIcon icon='mdi:chevron-down' className='bg-transparent' />
+        </nav>
       </button>
     </DropdownMenuTrigger>
 
@@ -87,10 +91,20 @@ const Accountsmenu = (): React.JSX.Element => {
 
 }
 
-
 function header() {
+  const { setSidebarStateOpen, toggleMiniSidebar, sidebarStateOpen } = useSidebar()
   return (
-    <div className='z-20 h-[var(--header-height)] border-b flex items-center px-5 bg-white'>
+    <div className='z-20 h-[var(--header-height)] border-b flex justify-between items-center px-5 bg-white'>
+      {
+        sidebarStateOpen.full && <div className='opacity-100 md:opacity-0 block transition-all add-customer-bezier duration-300 md:hidden fixed z-40 bg-gray-800/60 inset-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 pl-[var(--sidebar-width)]'>
+          <div onClick={() => setSidebarStateOpen(cv => cv = { mini: cv.mini, full: false })} className='w-full h-full flex items-center justify-center'>
+            <IconifyIcon onClick={() => setSidebarStateOpen(cv => cv = { mini: cv.mini, full: false })} className=" cursor-pointer !text-red-200 !bg-transparent h-[3.5rem] w-[3.5rem]" fontSize="3.5rem" icon="gg:push-left" />
+          </div>
+        </div>
+      }
+      <IconifyIcon onClick={() => setSidebarStateOpen(cv => cv = { mini: cv.mini, full: true })} className=' !text-gray-500 cursor-pointer !bg-transparent md:hidden' icon='gravity-ui:bars-unaligned' />
+
+      <IconifyIcon onClick={() => toggleMiniSidebar()} className={`!text-gray-500 cursor-pointer !bg-transparent hidden md:block transform transition-transform add-customer-bezier ${sidebarStateOpen.mini && " scale-x-[-1] "}`} icon='gravity-ui:bars-unaligned' />
       <Accountsmenu />
     </div>
   )

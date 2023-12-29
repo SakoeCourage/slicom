@@ -1,9 +1,10 @@
 
+"use client"
 import './globals.css'
 import 'simplebar-react/dist/simplebar.min.css';
 import Nprogressprovider from './providers/Nprogressprovider';
 import Toastserviceprovider from './providers/Toastserviceprovider';
-
+import Sidebarserviceprovider from './providers/Sidebarserviceprovider';
 
 export default function RootLayout({
     children,
@@ -15,7 +16,9 @@ export default function RootLayout({
             <body className='overflow-hidden w-full'>
                 <Nprogressprovider>
                     <Toastserviceprovider>
-                        {children}
+                        <Sidebarserviceprovider>
+                            {children}
+                        </Sidebarserviceprovider>
                     </Toastserviceprovider>
                 </Nprogressprovider>
             </body>

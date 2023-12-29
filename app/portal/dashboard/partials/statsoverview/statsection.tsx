@@ -9,7 +9,7 @@ function statsection() {
             <nav className=' font-bold text-base text-gray-500 my-5'>
                 Statistic Overview
             </nav>
-            <nav className='grid grid-cols-4 gap-2'>
+            <nav className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
                 {/* Card */}
                 <Statscard
                     totalNumberOfPolicies={232}
@@ -20,7 +20,7 @@ function statsection() {
                 <Statscard
                     totalNumberOfPolicies={100}
                     totlaPremiums={238}
-                    title='Comprehensive '
+                    title='Comprehensive Premiums'
                     className='bg-[#678AE2]  text-blue-50'
                 />
                 <Statscard

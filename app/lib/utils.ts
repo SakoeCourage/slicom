@@ -37,7 +37,7 @@ export function dateReformat(date: string): string | undefined {
   }
 }
 
-export const debounce = <T extends (...args: any[]) => void>(func: T, delay: number) => {
+export const debounce = <T extends (...args: any[] ) => void>(func: T, delay: number) => {
   let timeoutId: NodeJS.Timeout | null = null;
   return (...args: Parameters<T>) => {
     clearTimeout(timeoutId as NodeJS.Timeout);

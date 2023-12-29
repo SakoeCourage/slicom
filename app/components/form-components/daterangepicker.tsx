@@ -34,30 +34,36 @@ export default function daterangepicker({ label, required, placeholder, classNam
         <div className={cn("grid gap-2", className)}>
             <Popover>
                 <PopoverTrigger asChild>
-                    <Button
+                    <nav className={`flex flex-col gap-2  ${className}`}>
+                        {label && <Label className="flex items-center gap-1">{label}
+                            {required && <abbr className="text-red-500" title="This field is required ">*</abbr>}
+                        </Label>}
+                        <Button
                         type="button"
                         id="date"
-                       
+
                         variant="outline"
                         className={cn(
-                            "w-[300px] justify-start text-left font-normal",
+                            "w-[300px] justify-start text-left font-normal bg-white",
                             !date && "text-muted-foreground"
                         )}
                     >
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         {date?.from ? (
                             date.to ? (
-                                <>
-                                    {format(date.from, "LLL dd, y")} -{" "}
-                                    {format(date.to, "LLL dd, y")}
-                                </>
+                                <span className="whitespace-nowrap truncate">
+                                    {format(date.from, "d/M/Y")} -{" "}
+                                    {format(date.to, "d/M/Y")}
+                                </span>
                             ) : (
-                                format(date.from, "LLL dd, y")
+                                format(date.from, "d/M/Y")
                             )
                         ) : (
                             <span>{placeholder ?? "Pick a date"}</span>
                         )}
                     </Button>
+                    </nav>
+                
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
                     <Calendar

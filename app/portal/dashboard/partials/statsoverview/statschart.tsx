@@ -58,7 +58,7 @@ function statschart() {
     }
 
     return (
-        <div className='w-full md:col-span-2 flex flex-col shadow-c-md h-max rounded-md ' id='chart'>
+        <div className='w-full lg:col-span-2 flex flex-col shadow-c-md h-max rounded-md ' id='chart'>
             <nav className=' text-sm text-gray-600 py-3 border-b font-semibold px-2'>Premium Distribution <span className='text-gray-400'>%</span></nav>
             <div className='flex bar-chart'>
                 <ReactApexChart
