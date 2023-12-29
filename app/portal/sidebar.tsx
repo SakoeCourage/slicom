@@ -28,8 +28,6 @@ function Sidebarlink(props: params) {
 }
 
 
-
-
 export default function Sidebar() {
     const { toggleSideBar, sidebarStateOpen, isPopupVisible, currentPopupElement, handleLeave, setPopupVisible, visibilityTimeout, sidebarItemLocation } = useSidebar()
 
@@ -59,7 +57,6 @@ export default function Sidebar() {
                 }
             </AnimatePresence>
 
-            {/* </AnimatePresence> */}
             <div className=" h-full w-full add-glassmorphism  ">
                 <nav className=" h-[var(--header-height)] z-50 flex items-center justify-between  w-full  text-white py-1 border-b  ">
                     <nav className="px-5 flex items-center z-50 h-3/4 object-contain">
