@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Institutiontable from './partials/Institutiontable'
+import Institutiontable from './partials/institutiontable'
 
 
 function page() {
